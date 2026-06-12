@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>ALMARBAT | The Trusted Livestock Marketplace of Mauritania | سوق المربط الرقمي | Marché du bétail</title>
+  <meta name="description" content="Almarbat connects buyers, sellers, and delivery agents in a trusted, secure marketplace for sheep, cows, camels, and goats. Join the group purchase revolution in Mauritania.">
+  
+  <meta property="og:title" content="ALMARBAT — The Trusted Livestock Marketplace of Mauritania">
+  <meta property="og:description" content="Buy, sell, and deliver livestock securely. Group purchases, verified payments, and real-time tracking.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://almarbat.mr/og-image.jpg">
+  <meta property="og:url" content="https://almarbat.mr">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ALMARBAT — Trusted Livestock Marketplace">
+  <meta name="twitter:description" content="Modern platform for Mauritanian livestock trade. Secure payments, group purchases, and verified delivery.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --emerald-light: #10b981;
+      --dark-green: #064e3b;
+      --gold: #d4af37;
+      --gold-light: #f0c75e;
+      --gold-dark: #b8962e;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --black: #0a0a0a;
+      --font-ar: 'Tajawal', sans-serif;
+      --font-en: 'Poppins', sans-serif;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: var(--font-en);
+      background-color: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    body[lang="ar"] {
+      font-family: var(--font-ar);
+      direction: rtl;
+      text-align: right;
+    }
+    
+    body[lang="ar"] .reverse-dir {
+      direction: ltr;
+      text-align: left;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .announcement-bar {
+      background: linear-gradient(135deg, var(--dark-green), var(--emerald-dark));
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 1001;
+    }
+    
+    .announcement-bar i {
+      margin: 0 8px;
+      color: var(--gold-light);
+    }
+    
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      padding: 12px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--emerald-dark);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .logo i {
+      color: var(--gold);
+      font-size: 2rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-700);
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .nav-links a:hover {
+      color: var(--emerald);
+    }
+    
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      background: var(--gray-100);
+      border-radius: 40px;
+      padding: 4px;
+    }
+    
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      color: var(--gray-600);
+    }
+    
+    .lang-btn.active {
+      background: var(--emerald);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .btn {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+    }
+    
+    .btn-primary {
+      background: var(--emerald);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(5,150,105,0.3);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--emerald);
+      color: var(--emerald);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background: var(--emerald);
+      color: white;
+    }
+    
+    .btn-gold {
+      background: var(--gold);
+      color: var(--gray-900);
+    }
+    
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--gray-800);
+    }
+    
+    .hero {
+      padding: 60px 0;
+      background: radial-gradient(circle at 10% 20%, rgba(5,150,105,0.03), transparent 50%);
+    }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--gray-900);
+    }
+    
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--gray-600);
+      margin: 20px 0 30px;
+    }
+    
+    .stats-row {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--emerald);
+    }
+    
+    .marketplace-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .animal-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s;
+      border: 1px solid var(--gray-100);
+    }
+    
+    .animal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .feature-icon {
+      font-size: 2.2rem;
+      color: var(--emerald);
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gray-900);
+    }
+    
+    .dashboard-mock {
+      background: var(--gray-50);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+      padding: 16px 0;
+    }
+    
+    .footer {
+      background: var(--gray-900);
+      color: var(--gray-300);
+      padding: 60px 0 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px;
+        box-shadow: var(--shadow-lg);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement-bar" id="announceText">
+    <i class="fas fa-bullhorn"></i> <span data-en="New Platform Launch — Free Registration & Group Purchase Now Live!" data-ar="إطلاق المنصة الجديدة — تسجيل مجاني وميزة الشراء الجماعي متاحة الآن!" data-fr="Nouvelle plateforme lancée — Inscription gratuite et achat groupé disponible !">New Platform Launch — Free Registration & Group Purchase Now Live!</span>
+  </div>
+
+  <nav>
+    <div class="container nav-container">
+      <div class="logo"><i class="fas fa-horse-head"></i> ALMARBAT</div>
+      <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#home" data-en="Home" data-ar="الرئيسية" data-fr="Accueil">Home</a></li>
+        <li><a href="#marketplace" data-en="Marketplace" data-ar="السوق" data-fr="Marché">Marketplace</a></li>
+        <li><a href="#features" data-en="Features" data-ar="المميزات" data-fr="Fonctionnalités">Features</a></li>
+        <li><a href="#group" data-en="Group Buy" data-ar="الشراء الجماعي" data-fr="Achat groupé">Group Buy</a></li>
+        <li><a href="#security" data-en="Security" data-ar="الأمان" data-fr="Sécurité">Security</a></li>
+        <li><a href="#download" data-en="Download" data-ar="تحميل" data-fr="Télécharger">Download</a></li>
+      </ul>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ar">عربي</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
+        <a href="#" class="btn btn-outline" data-en="Login" data-ar="تسجيل الدخول" data-fr="Connexion">Login</a>
+        <a href="#" class="btn btn-primary" data-en="Register" data-ar="التسجيل" data-fr="S'inscrire">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title" data-en="The Trusted Livestock Marketplace of Mauritania" data-ar="سوق المربط الرقمي الموثوق في موريتانيا" data-fr="La plateforme de confiance pour le bétail en Mauritanie">The Trusted Livestock Marketplace of Mauritania</h1>
+          <p class="hero-sub" data-en="Buy, sell, and deliver sheep, cows, camels with verified security. Join group purchases and save." data-ar="اشترِ، بِع، واستلم المواشي بأمان. انضم للشراء الجماعي ووفّر." data-fr="Achetez, vendez et livrez du bétail en toute sécurité. Participez aux achats groupés.">Buy, sell, and deliver sheep, cows, camels with verified security. Join group purchases and save.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#" class="btn btn-primary"><i class="fab fa-google-play"></i> <span data-en="Android" data-ar="أندرويد" data-fr="Android">Android</span></a>
+            <a href="#" class="btn btn-outline"><i class="fab fa-apple"></i> <span data-en="iPhone" data-ar="آيفون" data-fr="iPhone">iPhone</span></a>
+            <a href="#" class="btn btn-gold"><span data-en="Become Seller" data-ar="كن بائعاً" data-fr="Devenir vendeur">Become Seller</span></a>
+          </div>
+          <div class="stats-row">
+            <div class="stat-item"><h3 class="counter" data-target="1250">0</h3><span data-en="Animals Listed" data-ar="حيوان مُدرج" data-fr="Animaux listés">Animals Listed</span></div>
+            <div class="stat-item"><h3 class="counter" data-target="340">0</h3><span data-en="Sellers" data-ar="بائع" data-fr="Vendeurs">Sellers</span></div>
+            <div class="stat-item"><h3 class="counter" data-target="870">0</h3><span data-en="Deliveries" data-ar="توصيلة" data-fr="Livraisons">Deliveries</span></div>
+          </div>
+        </div>
+        <div style="background: #f0f9f4; border-radius: 40px; padding: 30px; text-align: center;">
+          <i class="fas fa-store" style="font-size: 6rem; color: var(--emerald); opacity: 0.8;"></i>
+          <div style="font-weight: 700; margin-top: 20px;" data-en="Premium Livestock Market" data-ar="سوق مواشي ممتاز" data-fr="Marché premium du bétail">Premium Livestock Market</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="container" style="padding: 70px 0;">
+      <h2 class="section-title" data-en="Why Almarbat?" data-ar="لماذا المربط؟" data-fr="Pourquoi Almarbat ?">Why Almarbat?</h2>
+      <div class="marketplace-grid">
+        <div class="animal-card"><i class="fas fa-shield-alt feature-icon"></i><h3 data-en="Trusted Sellers" data-ar="بائعون موثوقون" data-fr="Vendeurs vérifiés">Trusted Sellers</h3></div>
+        <div class="animal-card"><i class="fas fa-lock feature-icon"></i><h3 data-en="Secure Payments" data-ar="دفع آمن" data-fr="Paiements sécurisés">Secure Payments</h3></div>
+        <div class="animal-card"><i class="fas fa-truck feature-icon"></i><h3 data-en="Verified Delivery" data-ar="توصيل مضمون" data-fr="Livraison vérifiée">Verified Delivery</h3></div>
+        <div class="animal-card"><i class="fas fa-users feature-icon"></i><h3 data-en="Group Purchase" data-ar="شراء جماعي" data-fr="Achat groupé">Group Purchase</h3></div>
+      </div>
+    </section>
+
+    <section id="marketplace" class="container" style="padding: 50px 0;">
+      <h2 class="section-title" data-en="Live Marketplace" data-ar="السوق المباشر" data-fr="Marché en direct">Live Marketplace</h2>
+      <div class="marketplace-grid">
+        <div class="animal-card"><i class="fas fa-sheep" style="font-size: 2rem;"></i><h4>Sheep</h4><p>45,000 MRU</p></div>
+        <div class="animal-card"><i class="fas fa-horse" style="font-size: 2rem;"></i><h4>Ram</h4><p>62,000 MRU</p></div>
+        <div class="animal-card"><i class="fas fa-cow" style="font-size: 2rem;"></i><h4>Cow</h4><p>210,000 MRU</p></div>
+        <div class="animal-card"><i class="fas fa-camel" style="font-size: 2rem;"></i><h4>Camel</h4><p>380,000 MRU</p></div>
+      </div>
+    </section>
+
+    <section id="group" class="container" style="padding: 50px 0;">
+      <h2 class="section-title" data-en="Group Purchase Revolution" data-ar="ثورة الشراء الجماعي" data-fr="Révolution de l'achat groupé">Group Purchase Revolution</h2>
+      <div style="background: var(--gray-50); padding: 30px; border-radius: 24px;">
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <div style="flex:1"><i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--emerald);"></i><h3 data-en="Contribute & Save" data-ar="ساهم ووفّر" data-fr="Contribuez et économisez">Contribute & Save</h3><p data-en="Admin creates offer, users contribute, progress tracked until delivery." data-ar="المشرف ينشئ العرض، يساهم المستخدمون، يتم تتبع التقدم حتى التسليم." data-fr="L'admin crée l'offre, les utilisateurs contribuent, progression suivie."></p></div>
+          <div style="background: white; padding: 16px; border-radius: 16px;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> <span data-en="Share via WhatsApp" data-ar="مشاركة عبر واتساب" data-fr="Partager via WhatsApp">Share via WhatsApp</span></div>
+        </div>
+        <div style="height: 12px; background: #e5e7eb; border-radius: 20px; margin-top: 20px;"><div style="width: 68%; height: 100%; background: var(--emerald); border-radius: 20px;"></div></div>
+      </div>
+    </section>
+
+    <section id="security" class="container" style="padding: 50px 0;">
+      <h2 class="section-title" data-en="Bank-Grade Security" data-ar="أمان بمستوى بنكي" data-fr="Sécurité bancaire">Bank-Grade Security</h2>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <span><i class="fas fa-check-circle" style="color: var(--emerald);"></i> Bankily</span>
+        <span><i class="fas fa-check-circle" style="color: var(--emerald);"></i> Masrivi</span>
+        <span><i class="fas fa-check-circle" style="color: var(--emerald);"></i> Sedad</span>
+        <span><i class="fas fa-check-circle" style="color: var(--emerald);"></i> OTP Verified</span>
+      </div>
+    </section>
+
+    <section id="download" class="container" style="padding: 70px 0; text-align: center; background: linear-gradient(135deg, #064e3b, #059669); border-radius: 40px; color: white; margin: 40px auto;">
+      <h2 data-en="Get the App" data-ar="حمّل التطبيق" data-fr="Téléchargez l'app">Get the App</h2>
+      <div style="display: flex; gap: 24px; justify-content: center; margin-top: 30px;">
+        <a href="#" class="btn btn-gold"><i class="fab fa-google-play"></i> Google Play</a>
+        <a href="#" class="btn btn-gold"><i class="fab fa-apple"></i> App Store</a>
+      </div>
+    </section>
+
+    <section class="container" style="padding: 50px 0;">
+      <h2 class="section-title" data-en="FAQ" data-ar="الأسئلة الشائعة" data-fr="FAQ">FAQ</h2>
+      <div class="faq-item"><strong data-en="How to register?" data-ar="كيف أسجل؟" data-fr="Comment s'inscrire ?">How to register?</strong><p data-en="Download app and sign up with phone." data-ar="حمّل التطبيق وسجل برقم هاتفك." data-fr="Téléchargez et inscrivez-vous."></p></div>
+      <div class="faq-item"><strong data-en="Is delivery available?" data-ar="هل التوصيل متاح؟" data-fr="Livraison disponible ?">Is delivery available?</strong><p data-en="Yes, across Mauritania." data-ar="نعم، في كل موريتانيا." data-fr="Oui, partout en Mauritanie."></p></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 30px;">
+      <div><h4>ALMARBAT</h4><p data-en="Trusted since 2026" data-ar="موثوق منذ 2026" data-fr="Confiance depuis 2026">Trusted since 2026</p></div>
+      <div><h4 data-en="Support" data-ar="الدعم" data-fr="Support">Support</h4><p>contact@almarbat.mr</p></div>
+      <div><i class="fab fa-whatsapp"></i> +222 40 00 00 00</div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+      const body = document.body;
+      
+      function setLanguage(lang) {
+        body.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+        document.querySelectorAll('[data-en][data-ar][data-fr]').forEach(el => {
+          const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en');
+          if (text) el.textContent = text;
+        });
+        langButtons.forEach(b => b.classList.remove('active'));
+        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        localStorage.setItem('almarbat-lang', lang);
+      }
+
+      langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+      
+      const savedLang = localStorage.getItem('almarbat-lang') || 'en';
+      setLanguage(savedLang);
+
+      document.getElementById('mobileToggle').addEventListener('click', () => {
+        document.getElementById('navMenu').classList.toggle('show');
+      });
+
+      const counters = document.querySelectorAll('.counter');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = +el.dataset.target;
+            let count = 0;
+            const step = target / 60;
+            const timer = setInterval(() => {
+              count += step;
+              if (count >= target) { el.textContent = target; clearInterval(timer); }
+              else el.textContent = Math.floor(count);
+            }, 20);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => observer.observe(c));
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
