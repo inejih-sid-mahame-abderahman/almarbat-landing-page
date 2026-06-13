@@ -503,7 +503,50 @@ textarea.fc{resize:vertical;min-height:130px}
   .contact-form-grid{grid-template-columns:1fr}
   .fg.full{grid-column:span 1}
 }
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
 
+.hero-bg-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* centered vertically */
+  justify-content: center; /* centered horizontally */
+  padding-top: 60px; /* closer to navbar */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 6% 60px;
+  max-width: 920px;
+  text-align: center; /* centered text */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: center;
+    padding-top: 40px;
+  }
+  .hero-content {
+    padding: 30px 5% 50px;
+  }
+}
 /* ============================================================
    FOOTER
    ============================================================ */
@@ -574,6 +617,9 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
 <!-- ============================================================
      HERO
      ============================================================ -->
+<!-- ============================================================
+     HERO — VIDEO BACKGROUND
+     ============================================================ -->
 <section class="hero" id="hero">
   <!-- particles -->
   <div class="hero-particles">
@@ -581,7 +627,16 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
     <div class="particle" style="width:60px;height:60px;top:60%;left:85%;animation-delay:2s;animation-duration:9s"></div>
     <div class="particle" style="width:80px;height:80px;top:30%;left:92%;animation-delay:4s;animation-duration:6s"></div>
   </div>
-  <div class="hero-bg" id="heroBg"></div>
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="hero-bg-video">
+    <video id="heroVideoBg" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;">
+      <source src="https://assets.mixkit.co/videos/preview/754/754-small.mp4" type="video/mp4">
+      <!-- Fallback image -->
+      <img src="https://i.pinimg.com/736x/c3/fe/29/c3fe294096bcfc0561746cb60942d57a.jpg" alt="Livestock background" style="width:100%;height:100%;object-fit:cover;">
+    </video>
+  </div>
+
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i>
@@ -625,7 +680,6 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
     </div>
   </div>
 </section>
-
 <!-- ============================================================
      WHY ALMARBAT
      ============================================================ -->
