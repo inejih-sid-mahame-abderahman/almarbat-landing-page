@@ -106,45 +106,37 @@ span.lang-active{display:inline!important}
 }
 
 /* ============================================================
-   HERO
+   HERO — full-screen, shrinks on scroll
    ============================================================ */
 .hero{
   position:relative;
   height:100vh;
   min-height:600px;
   overflow:hidden;
-  display:flex;align-items:center;
-  justify-content:center;
+  display:flex;align-items:flex-end;
   transition:height .6s var(--ease);
 }
 .hero.shrunk{height:70vh}
-.hero-bg-video {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 1;
-}
-.hero-bg-video video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85) contrast(1.1);
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://i.pinimg.com/736x/c3/fe/29/c3fe294096bcfc0561746cb60942d57a.jpg');
+  background-size:cover;background-position:center;
+  transform-origin:center;
+  transition:transform .6s var(--ease);
 }
 .hero-overlay{
   position:absolute;inset:0;
   background:linear-gradient(to top, rgba(6,46,34,.92) 0%, rgba(6,46,34,.5) 50%, rgba(6,46,34,.15) 100%);
-  z-index:1;
 }
-.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .particle{position:absolute;border-radius:50%;background:rgba(201,130,10,.25);animation:drift 8s infinite ease-in-out}
 @keyframes drift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.1)}}
 .hero-content{
-  position:relative;z-index:3;
-  padding:40px 6% 60px;
-  max-width:920px;
-  text-align:center;
+  position:relative;z-index:2;
+  padding:60px 6% 80px;
+  max-width:900px;
+  display:flex;
+  flex-direction:column;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
@@ -162,8 +154,8 @@ span.lang-active{display:inline!important}
   letter-spacing:-.02em;
 }
 .hero h1 em{color:var(--sand);font-style:normal}
-.hero p{font-size:1.1rem;color:rgba(255,255,255,.78);max-width:580px;margin:0 auto 36px;font-weight:400}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,.78);max-width:580px;margin-bottom:36px;font-weight:400}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;font-weight:600;font-size:.88rem;transition:var(--t);white-space:nowrap}
 .btn-primary{background:var(--gold);color:var(--white)}
 .btn-primary:hover{background:#a86a08;transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,130,10,.4)}
@@ -175,18 +167,12 @@ span.lang-active{display:inline!important}
 .btn-outline-forest:hover{background:var(--forest);color:var(--white)}
 
 .hero-stats{
-  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  display:flex;gap:40px;flex-wrap:wrap;
   border-top:1px solid rgba(255,255,255,.15);padding-top:32px;
 }
-.hstat{text-align:center}
+.hstat{text-align:left}
 .hstat h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--sand);line-height:1}
 .hstat p{font-size:.75rem;color:rgba(255,255,255,.6);margin-top:4px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-
-@media (max-width: 768px) {
-  .hero {padding-top:40px;}
-  .hero-content {padding:30px 5% 50px;}
-  .hero-stats{gap:20px;}
-}
 
 /* ============================================================
    SECTION COMMONS
@@ -229,70 +215,7 @@ span.lang-active{display:inline!important}
 .feat-card p{font-size:.875rem;color:var(--muted);line-height:1.7;position:relative;z-index:1}
 
 /* ============================================================
-   UNIFIED PHONE FRAME (PERFECT LIKE PORTALS)
-   ============================================================ */
-.phone-wrap{position:relative;flex-shrink:0;margin:0 auto;}
-.phone-frame{
-  width:100%;
-  max-width:260px;
-  background:var(--ink);
-  border-radius:42px;
-  padding:12px;
-  box-shadow:0 40px 80px rgba(10,79,58,.25), 0 0 0 1px rgba(255,255,255,.08);
-  border:2px solid rgba(255,255,255,.1);
-  position:relative;
-}
-.phone-notch-dot{
-  width:90px;
-  height:20px;
-  background:var(--ink);
-  border-radius:0 0 14px 14px;
-  margin:0 auto 8px;
-}
-.phone-screen{
-  border-radius:32px;
-  overflow:hidden;
-  background:var(--cream);
-  aspect-ratio:9/19.5;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);
-}
-.phone-caption{
-  text-align:center;
-  margin-top:16px;
-  font-size:.75rem;
-  color:rgba(232,213,163,.75);
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-}
-
-/* Small variant for showcases */
-.phone-wrap.small .phone-frame{
-  max-width:180px;
-  padding:8px;
-  border-radius:34px;
-}
-.phone-wrap.small .phone-notch-dot{
-  width:65px;
-  height:14px;
-}
-.phone-wrap.small .phone-screen{
-  border-radius:26px;
-}
-
-/* App showcase specific */
-.app-screens{display:flex;gap:24px;align-items:flex-start;justify-content:center;flex-wrap:wrap;padding:20px 0}
-.app-screens .phone-wrap{margin-top:0;}
-.app-screens .phone-wrap:nth-child(2){margin-top:40px;}
-
-/* Group phones */
-.group-phones{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-
-/* ============================================================
-   APP SHOWCASE
+   APP SHOWCASE (replaces marketplace)
    ============================================================ */
 .app-showcase-sec{background:var(--forest-d);overflow:hidden;position:relative}
 .app-showcase-sec::before{
@@ -303,6 +226,31 @@ span.lang-active{display:inline!important}
 .app-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
 .app-text .sec-title{color:var(--sand)}
 .app-text .sec-sub{color:rgba(232,213,163,.65)}
+.app-screens{display:flex;gap:20px;align-items:flex-start;justify-content:center;padding:20px 0}
+.phone-wrap{position:relative;flex:1;max-width:160px}
+.phone-wrap:nth-child(2){margin-top:40px}
+.phone-frame{
+  width:100%;
+  background:var(--ink);border-radius:28px;
+  padding:8px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border:2px solid rgba(255,255,255,.1);
+}
+.phone-screen{
+  border-radius:22px;overflow:hidden;background:var(--cream);
+  aspect-ratio:9/19.5;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.pscreen-header{background:var(--forest);padding:12px 10px 8px;color:var(--white);font-size:.65rem;font-weight:700}
+.pscreen-body{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+.pscreen-card{background:var(--white);border-radius:8px;padding:8px;box-shadow:var(--shadow-sm)}
+.pscreen-tag{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
+.pscreen-val{font-size:.72rem;font-weight:700;color:var(--forest-d)}
+.pscreen-bar{height:4px;border-radius:4px;background:var(--forest-l);margin-top:5px;overflow:hidden}
+.pscreen-fill{height:100%;background:var(--forest);border-radius:4px}
+.phone-caption{text-align:center;margin-top:12px;font-size:.7rem;color:rgba(232,213,163,.6);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.phone-notch-dot{width:50px;height:12px;background:var(--ink);border-radius:0 0 8px 8px;margin:0 auto 4px}
 @media(max-width:900px){
   .app-grid{grid-template-columns:1fr;gap:40px}
   .app-text{text-align:center}
@@ -310,7 +258,7 @@ span.lang-active{display:inline!important}
 }
 
 /* ============================================================
-   HOW IT WORKS
+   HOW IT WORKS — timeline
    ============================================================ */
 .how-sec{background:var(--white)}
 .timeline{max-width:860px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:0}
@@ -363,6 +311,21 @@ span.lang-active{display:inline!important}
 .group-feat-text h4{font-size:.9rem;font-weight:700;color:var(--sand);margin-bottom:3px}
 .group-feat-text p{font-size:.8rem;color:rgba(232,213,163,.6);line-height:1.6}
 
+.phone-wrap{position:relative;flex:1;max-width:160px}
+.phone-frame{
+  width:100%;
+  background:var(--ink);border-radius:28px;
+  padding:8px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border:2px solid rgba(255,255,255,.1);
+}
+.phone-screen{
+  border-radius:22px;overflow:hidden;background:var(--cream);
+  aspect-ratio:9/19.5;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+
 @media(max-width:900px){
   .group-inner{grid-template-columns:1fr;gap:40px}
   .group-text{text-align:center}
@@ -392,7 +355,7 @@ span.lang-active{display:inline!important}
 .flow-step p{font-size:.78rem;color:var(--muted);line-height:1.6}
 
 /* ============================================================
-   PORTALS
+   PORTALS (Seller / Driver / Buyer) — phone mockup design
    ============================================================ */
 .portals-sec{background:var(--white)}
 .portal-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:50px;flex-wrap:wrap}
@@ -456,7 +419,7 @@ span.lang-active{display:inline!important}
 .sec-card p{font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.7}
 
 /* ============================================================
-   TESTIMONIALS + STATS + CTA + FAQ + CONTACT + FOOTER (unchanged for brevity but fully responsive)
+   TESTIMONIALS
    ============================================================ */
 .testi-sec{background:var(--cream)}
 .testi-track{position:relative;max-width:760px;margin:0 auto;min-height:200px}
@@ -470,22 +433,36 @@ blockquote{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--fo
 .t-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;transition:var(--t)}
 .t-dot.active{background:var(--forest);transform:scale(1.3)}
 
+/* ============================================================
+   STATS
+   ============================================================ */
 .stats-sec{background:var(--forest);text-align:center}
 .stats-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px}
 .stat-big h2{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--sand);line-height:1;margin-bottom:6px}
 .stat-big p{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
 
+/* ============================================================
+   DOWNLOAD CTA
+   ============================================================ */
 .dl-cta-sec{background:linear-gradient(135deg,var(--gold) 0%,#a86a08 100%);text-align:center;position:relative;overflow:hidden}
-.dl-cta-sec h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);margin-bottom:14px}
-.dl-cta-sec p{color:rgba(255,255,255,.85);font-size:1.05rem;max-width:520px;margin:0 auto 36px}
-.store-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.dl-cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.dl-cta-sec h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);margin-bottom:14px;position:relative;z-index:1}
+.dl-cta-sec p{color:rgba(255,255,255,.85);font-size:1.05rem;max-width:520px;margin:0 auto 36px;position:relative;z-index:1}
+.store-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
 .store-btn{
   background:var(--forest-d);color:var(--white);padding:13px 26px;border-radius:12px;
   display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:700;
   transition:var(--t);box-shadow:0 4px 20px rgba(0,0,0,.2);
 }
 .store-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.store-btn i{font-size:1.2rem}
 
+/* ============================================================
+   FAQ
+   ============================================================ */
 .faq-sec{background:var(--white)}
 .faq-search{position:relative;max-width:500px;margin:0 auto 40px;display:flex;align-items:center}
 .faq-search input{width:100%;padding:13px 20px 13px 46px;border:2px solid var(--border);border-radius:12px;font-size:.9rem;outline:none;transition:var(--t);font-family:inherit;background:var(--cream)}
@@ -502,10 +479,14 @@ blockquote{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--fo
 .faq-a p{padding:0 22px 18px;font-size:.86rem;color:var(--muted);line-height:1.7}
 .faq-item.open .faq-a{max-height:200px}
 
+/* ============================================================
+   CONTACT
+   ============================================================ */
 .contact-sec{background:var(--cream)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:start}
 .contact-cards{display:flex;flex-direction:column;gap:16px}
 .c-card{display:flex;align-items:center;gap:16px;padding:22px 20px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-md);transition:var(--t);color:inherit}
+a.c-card{text-decoration:none}
 .c-card:hover{border-color:var(--forest);box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .c-icon{width:44px;height:44px;border-radius:10px;background:var(--forest-l);color:var(--forest);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .c-card h4{font-size:.88rem;font-weight:700;color:var(--forest-d);margin-bottom:2px}
@@ -522,7 +503,53 @@ textarea.fc{resize:vertical;min-height:130px}
   .contact-form-grid{grid-template-columns:1fr}
   .fg.full{grid-column:span 1}
 }
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
 
+.hero-bg-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* centered vertically */
+  justify-content: center; /* centered horizontally */
+  padding-top: 60px; /* closer to navbar */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 6% 60px;
+  max-width: 920px;
+  text-align: center; /* centered text */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: center;
+    padding-top: 40px;
+  }
+  .hero-content {
+    padding: 30px 5% 50px;
+  }
+}
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
 .footer-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;margin-bottom:60px}
 .footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--white);display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -541,14 +568,14 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
   .footer-top>:first-child{grid-column:span 2}
 }
 
-/* Toast */
+/* Success toast */
 .toast{position:fixed;bottom:30px;right:30px;background:var(--forest);color:var(--white);padding:14px 22px;border-radius:12px;font-size:.88rem;font-weight:600;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:var(--t);z-index:9999;display:flex;align-items:center;gap:10px}
 .toast.show{transform:translateY(0);opacity:1}
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR + NAVBAR (unchanged) -->
+<!-- ANNOUNCEMENT BAR -->
 <div class="ann-bar">
   <i class="fa-solid fa-star"></i>
   <span class="lang-node lang-en lang-active">🎉 Platform launched! Free registration open now. Try our Group Purchase feature — buy a share in premium livestock with others.</span>
@@ -556,11 +583,13 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
   <span class="lang-node lang-ar">🎉 تم إطلاق المنصة! التسجيل مجاني. جرب ميزة الشراء الجماعي — اشترِ حصة في ماشية متميزة مع آخرين.</span>
 </div>
 
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <a href="#hero" class="logo">
     <div class="logo-icon"><i class="fa-solid fa-horse"></i></div>
     <span>ALMARBAT</span>
   </a>
+
   <ul class="nav-menu" id="navMenu">
     <li><a href="#hero" class="nav-link active"><span class="lang-node lang-en lang-active">Home</span><span class="lang-node lang-fr">Accueil</span><span class="lang-node lang-ar">الرئيسية</span></a></li>
     <li><a href="#why" class="nav-link"><span class="lang-node lang-en lang-active">Why Almarbat</span><span class="lang-node lang-fr">Pourquoi Almarbat</span><span class="lang-node lang-ar">لماذا المربط</span></a></li>
@@ -569,6 +598,7 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
     <li><a href="#portals" class="nav-link"><span class="lang-node lang-en lang-active">Portals</span><span class="lang-node lang-fr">Portails</span><span class="lang-node lang-ar">البوابات</span></a></li>
     <li><a href="#contact" class="nav-link"><span class="lang-node lang-en lang-active">Contact</span><span class="lang-node lang-fr">Contact</span><span class="lang-node lang-ar">الاتصال</span></a></li>
   </ul>
+
   <div class="nav-actions">
     <select class="lang-sel" id="langSel">
       <option value="en" selected>EN</option>
@@ -584,18 +614,29 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
   </div>
 </nav>
 
-<!-- HERO (with centered improvements) -->
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<!-- ============================================================
+     HERO — VIDEO BACKGROUND
+     ============================================================ -->
 <section class="hero" id="hero">
+  <!-- particles -->
   <div class="hero-particles">
     <div class="particle" style="width:120px;height:120px;top:15%;left:80%;animation-delay:0s;animation-duration:7s"></div>
     <div class="particle" style="width:60px;height:60px;top:60%;left:85%;animation-delay:2s;animation-duration:9s"></div>
     <div class="particle" style="width:80px;height:80px;top:30%;left:92%;animation-delay:4s;animation-duration:6s"></div>
   </div>
+
+  <!-- VIDEO BACKGROUND -->
   <div class="hero-bg-video">
-    <video id="heroVideoBg" autoplay loop muted playsinline>
+    <video id="heroVideoBg" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;">
       <source src="https://res.cloudinary.com/dobbzalqp/video/upload/v1781362354/zrgaozcleh0wa6hgmej8.mp4" type="video/mp4">
+      <!-- Fallback image -->
+      <img src="almarabt platform logo.jpeg" alt="Livestock background" style="width:100%;height:100%;object-fit:cover;">
     </video>
   </div>
+
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i>
@@ -614,9 +655,22 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
       <span class="lang-node lang-ar">شراء جماعي آمن، بائعون موثوقون، وتوصيل شفاف — كل ذلك في سوق رقمي متكامل.</span>
     </p>
     <div class="hero-btns">
-      <a href="#download" class="btn btn-primary"><i class="fa-brands fa-google-play"></i> <span class="lang-node lang-en lang-active">Android App</span><span class="lang-node lang-fr">App Android</span><span class="lang-node lang-ar">تطبيق أندرويد</span></a>
-      <a href="#download" class="btn btn-ghost"><i class="fa-brands fa-apple"></i> <span class="lang-node lang-en lang-active">iOS App</span><span class="lang-node lang-fr">App iOS</span><span class="lang-node lang-ar">تطبيق iOS</span></a>
-      <button onclick="playVideo()" class="btn btn-outline-forest"><i class="fa-solid fa-play"></i> <span class="lang-node lang-en lang-active">Watch Platform Video</span><span class="lang-node lang-fr">Voir la Vidéo</span><span class="lang-node lang-ar">شاهد الفيديو</span></button>
+      <a href="#download" class="btn btn-primary"><i class="fa-brands fa-google-play"></i>
+        <span class="lang-node lang-en lang-active">Android App</span>
+        <span class="lang-node lang-fr">App Android</span>
+        <span class="lang-node lang-ar">تطبيق أندرويد</span>
+      </a>
+      <a href="#download" class="btn btn-ghost"><i class="fa-brands fa-apple"></i>
+        <span class="lang-node lang-en lang-active">iOS App</span>
+        <span class="lang-node lang-fr">App iOS</span>
+        <span class="lang-node lang-ar">تطبيق iOS</span>
+      </a>
+      <button onclick="playVideo()" class="btn btn-outline-forest" style="gap:8px">
+        <i class="fa-solid fa-play"></i>
+        <span class="lang-node lang-en lang-active">Watch Platform Video</span>
+        <span class="lang-node lang-fr">Voir la Vidéo</span>
+        <span class="lang-node lang-ar">شاهد الفيديو</span>
+      </button>
     </div>
     <div class="hero-stats">
       <div class="hstat"><h3 class="counter" data-target="15000">0</h3><p class="lang-node lang-en lang-active">Animals Listed</p><p class="lang-node lang-fr">Animaux Inscrits</p><p class="lang-node lang-ar">ماشية مسجلة</p></div>
@@ -626,91 +680,938 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
     </div>
   </div>
 </section>
+<!-- ============================================================
+     WHY ALMARBAT
+     ============================================================ -->
+<section class="sec why-sec" id="why">
+  <div class="sec-head reveal">
+    <div class="sec-label">
+      <span class="lang-node lang-en lang-active">Why Choose Us</span>
+      <span class="lang-node lang-fr">Pourquoi Nous Choisir</span>
+      <span class="lang-node lang-ar">لماذا تختارنا</span>
+    </div>
+    <h2 class="sec-title">
+      <span class="lang-node lang-en lang-active">Built for Mauritanian Traders</span>
+      <span class="lang-node lang-fr">Conçu pour les Commerçants Mauritaniens</span>
+      <span class="lang-node lang-ar">مصمم لتجار موريتانيا</span>
+    </h2>
+    <p class="sec-sub">
+      <span class="lang-node lang-en lang-active">Every feature is purpose-built around local trading norms, local payment systems, and the real needs of Mauritanian livestock communities.</span>
+      <span class="lang-node lang-fr">Chaque fonctionnalité est construite autour des normes commerciales locales et des besoins réels des éleveurs mauritaniens.</span>
+      <span class="lang-node lang-ar">كل ميزة مصممة خصيصاً حول أعراف التجارة المحلية واحتياجات مجتمعات المواشي الموريتانية.</span>
+    </p>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Trusted Sellers</span><span class="lang-node lang-fr">Vendeurs de Confiance</span><span class="lang-node lang-ar">باعة موثوقون</span></h3>
+      <p><span class="lang-node lang-en lang-active">Every seller is ID-verified by our admin team before going live. You always know who you're buying from.</span><span class="lang-node lang-fr">Chaque vendeur est vérifié par notre équipe avant d'être activé sur la plateforme.</span><span class="lang-node lang-ar">يتم التحقق من هوية كل بائع بواسطة فريقنا الإداري قبل نشر أي إعلان.</span></p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-lock"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Secure Payments</span><span class="lang-node lang-fr">Paiements Sécurisés</span><span class="lang-node lang-ar">دفع آمن</span></h3>
+      <p><span class="lang-node lang-en lang-active">Funds are held securely until you confirm receipt of your livestock — no payment released before delivery.</span><span class="lang-node lang-fr">Vos fonds sont retenus jusqu'à la confirmation de réception de votre bétail.</span><span class="lang-node lang-ar">تُحتجز الأموال بأمان حتى تؤكد استلام ماشيتك — لا يُحرَّر أي دفع قبل التسليم.</span></p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Verified Delivery</span><span class="lang-node lang-fr">Livraison Vérifiée</span><span class="lang-node lang-ar">توصيل محقق منه</span></h3>
+      <p><span class="lang-node lang-en lang-active">Track your delivery in real-time. QR verification ensures only the right recipient can confirm handover.</span><span class="lang-node lang-fr">Suivez votre livraison en temps réel. La vérification QR garantit que seul le bon destinataire peut confirmer.</span><span class="lang-node lang-ar">تتبع توصيلك في الوقت الفعلي. يضمن التحقق بـQR أن المستلم الصحيح فقط يمكنه التأكيد.</span></p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-people-group"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Group Purchase</span><span class="lang-node lang-fr">Achat Groupé</span><span class="lang-node lang-ar">الشراء الجماعي</span></h3>
+      <p><span class="lang-node lang-en lang-active">Pool funds with others to share a premium camel or cow. Pay only your fraction — we handle the rest.</span><span class="lang-node lang-fr">Partagez les frais avec d'autres acheteurs pour un chameau ou une vache premium.</span><span class="lang-node lang-ar">اجمع الأموال مع آخرين لمشاركة جمل أو بقرة ممتازة. ادفع حصتك فقط — نحن نتولى الباقي.</span></p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-user-shield"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Buyer Protection</span><span class="lang-node lang-fr">Protection de l'Acheteur</span><span class="lang-node lang-ar">حماية المشتري</span></h3>
+      <p><span class="lang-node lang-en lang-active">Full refund or replacement guarantee if the animal doesn't match its listing. We stand behind every purchase.</span><span class="lang-node lang-fr">Remboursement complet ou remplacement si l'animal ne correspond pas à l'annonce.</span><span class="lang-node lang-ar">ضمان استرداد كامل أو استبدال إذا لم تطابق الماشية الإعلان. نحن نضمن كل عملية شراء.</span></p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+      <h3><span class="lang-node lang-en lang-active">Admin Verification</span><span class="lang-node lang-fr">Vérification Administrative</span><span class="lang-node lang-ar">التحقق الإداري</span></h3>
+      <p><span class="lang-node lang-en lang-active">Our team manually reviews every payment receipt 24/7. No automated guesswork — real people protecting your money.</span><span class="lang-node lang-fr">Notre équipe examine manuellement chaque reçu de paiement 24h/24, 7j/7.</span><span class="lang-node lang-ar">يراجع فريقنا يدوياً كل إيصال دفع على مدار الساعة. أشخاص حقيقيون يحمون أموالك.</span></p>
+    </div>
+  </div>
+</section>
 
-<!-- WHY, HOW, PAYMENT sections unchanged except for phone fixes below -->
-
-<!-- APP SHOWCASE - Unified phones -->
+<!-- ============================================================
+     APP SHOWCASE (replaces old marketplace)
+     ============================================================ -->
 <section class="sec app-showcase-sec" id="app">
   <div class="app-grid">
     <div class="app-text reveal-l">
-      <div class="sec-label"><span class="lang-node lang-en lang-active">Inside the App</span><span class="lang-node lang-fr">Dans l'Application</span><span class="lang-node lang-ar">داخل التطبيق</span></div>
-      <h2 class="sec-title"><span class="lang-node lang-en lang-active">Everything in Your Pocket</span><span class="lang-node lang-fr">Tout dans Votre Poche</span><span class="lang-node lang-ar">كل شيء في جيبك</span></h2>
-      <p class="sec-sub"><span class="lang-node lang-en lang-active">Browse verified listings, join group pools, upload payment receipts, and track your delivery — all from our sleek mobile app.</span><span class="lang-node lang-fr">Parcourez les annonces vérifiées...</span><span class="lang-node lang-ar">تصفح الإعلانات...</span></p>
-      <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
-        <a href="#download" class="btn btn-ghost"><i class="fa-brands fa-google-play"></i> Google Play</a>
-        <a href="#download" class="btn btn-ghost"><i class="fa-brands fa-apple"></i> App Store</a>
+      <div class="sec-label">
+        <span class="lang-node lang-en lang-active">Inside the App</span>
+        <span class="lang-node lang-fr">Dans l'Application</span>
+        <span class="lang-node lang-ar">داخل التطبيق</span>
+      </div>
+      <h2 class="sec-title">
+        <span class="lang-node lang-en lang-active">Everything in Your Pocket</span>
+        <span class="lang-node lang-fr">Tout dans Votre Poche</span>
+        <span class="lang-node lang-ar">كل شيء في جيبك</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="lang-node lang-en lang-active">Browse verified listings, join group pools, upload payment receipts, and track your delivery — all from our sleek mobile app, built for low-bandwidth rural connectivity.</span>
+        <span class="lang-node lang-fr">Parcourez les annonces vérifiées, rejoignez des pools groupés et suivez votre livraison depuis notre application mobile.</span>
+        <span class="lang-node lang-ar">تصفح الإعلانات الموثقة، انضم لمجموعات الشراء، ارفع إيصالات الدفع، وتتبع توصيلك — كل ذلك من تطبيقنا المحمول.</span>
+      </p>
+      <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#download" class="btn btn-ghost" style="border-color:rgba(232,213,163,.3)"><i class="fa-brands fa-google-play"></i>
+          <span class="lang-node lang-en lang-active">Google Play</span><span class="lang-node lang-fr">Google Play</span><span class="lang-node lang-ar">Google Play</span>
+        </a>
+        <a href="#download" class="btn btn-ghost" style="border-color:rgba(232,213,163,.3)"><i class="fa-brands fa-apple"></i>
+          <span class="lang-node lang-en lang-active">App Store</span><span class="lang-node lang-fr">App Store</span><span class="lang-node lang-ar">App Store</span>
+        </a>
       </div>
     </div>
+
     <div class="app-screens reveal-r">
-      <div class="phone-wrap small">
+      <!-- Phone 1: Home feed -->
+      <div class="phone-wrap">
         <div class="phone-frame">
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
-            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" alt="App Feed" style="width:100%;height:100%;object-fit:cover;">
+           
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" alt="App Feed" style="width:100%;height:100%;object-fit:cover;">
+            </div>
           </div>
         </div>
-        <div class="phone-caption">Browse Listings</div>
+        <div class="phone-caption">
+          <span class="lang-node lang-en lang-active">Browse Listings</span>
+          <span class="lang-node lang-fr">Parcourir les annonces</span>
+          <span class="lang-node lang-ar">تصفح الإعلانات</span>
+        </div>
       </div>
-      <div class="phone-wrap small">
+
+      <!-- Phone 2: Payment proof -->
+      <div class="phone-wrap">
         <div class="phone-frame">
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
-            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361247/gi3bvbwice46y7w6xnui.jpg" alt="Payment" style="width:100%;height:100%;object-fit:cover;">
+
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361247/gi3bvbwice46y7w6xnui.jpg" alt="Payment Upload" style="width:100%;height:100%;object-fit:cover;">
+            </div>
           </div>
         </div>
-        <div class="phone-caption">Upload Receipt</div>
+        <div class="phone-caption">
+   
+          <span class="lang-node lang-fr">Envoyer le Reçu</span>
+          <span class="lang-node lang-ar">رفع إيصال الدفع</span>
+        </div>
       </div>
-      <div class="phone-wrap small">
+
+      <!-- Phone 3: Delivery tracking -->
+      <div class="phone-wrap">
         <div class="phone-frame">
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
-            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361298/x9rmwwedq8x0jx9gvkmo.jpg" alt="Track" style="width:100%;height:100%;object-fit:cover;">
+
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361298/x9rmwwedq8x0jx9gvkmo.jpg" alt="Delivery Track" style="width:100%;height:100%;object-fit:cover;">
+            </div>
           </div>
         </div>
-        <div class="phone-caption">Track Delivery</div>
+        <div class="phone-caption">
+          <span class="lang-node lang-en lang-active">Track Delivery</span>
+          <span class="lang-node lang-fr">Suivi Livraison</span>
+          <span class="lang-node lang-ar">تتبع التوصيل</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GROUP PURCHASE - Unified phones -->
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="sec how-sec" id="how">
+  <div class="sec-head reveal">
+    <div class="sec-label">
+      <span class="lang-node lang-en lang-active">The Process</span>
+      <span class="lang-node lang-fr">Le Processus</span>
+      <span class="lang-node lang-ar">كيف يعمل النظام</span>
+    </div>
+    <h2 class="sec-title">
+      <span class="lang-node lang-en lang-active">How Almarbat Works</span>
+      <span class="lang-node lang-fr">Comment Fonctionne Almarbat</span>
+      <span class="lang-node lang-ar">كيف تعمل منصة المربط</span>
+    </h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-row reveal">
+      <div class="tl-card tl-left"><div class="tl-step">Step 01</div><h3><span class="lang-node lang-en lang-active">Browse Verified Listings</span><span class="lang-node lang-fr">Parcourir les Annonces</span><span class="lang-node lang-ar">تصفح الإعلانات الموثقة</span></h3><p><span class="lang-node lang-en lang-active">Explore animals by type, weight, location, and price. Every listing is approved before it goes live.</span><span class="lang-node lang-ar">استكشف الحيوانات حسب النوع والوزن والموقع والسعر. كل إعلان معتمد قبل النشر.</span></p></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-row even reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-bookmark"></i></div></div>
+      <div class="tl-card tl-right"><div class="tl-step">Step 02</div><h3><span class="lang-node lang-en lang-active">Reserve Your Animal</span><span class="lang-node lang-fr">Réservez votre Animal</span><span class="lang-node lang-ar">احجز الماشية</span></h3><p><span class="lang-node lang-en lang-active">Lock the listing instantly. No one else can purchase while it's reserved in your name.</span><span class="lang-node lang-ar">احجز الإعلان فوراً. لا يمكن لأحد آخر الشراء بينما يكون محجوزاً باسمك.</span></p></div>
+    </div>
+    <div class="tl-row reveal">
+      <div class="tl-card tl-left"><div class="tl-step">Step 03</div><h3><span class="lang-node lang-en lang-active">Pay via Local Wallets</span><span class="lang-node lang-fr">Payer via Portefeuille Local</span><span class="lang-node lang-ar">ادفع عبر المحافظ المحلية</span></h3><p><span class="lang-node lang-en lang-active">Transfer via Bankily, Masrivi, Bimbank, or Sedad — then upload your receipt screenshot inside the app.</span><span class="lang-node lang-ar">حوّل عبر Bankily أو Masrivi أو Bimbank أو Sedad — ثم ارفع لقطة الإيصال داخل التطبيق.</span></p></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-mobile-screen"></i></div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-row even reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-user-check"></i></div></div>
+      <div class="tl-card tl-right"><div class="tl-step">Step 04</div><h3><span class="lang-node lang-en lang-active">Admin Approves Payment</span><span class="lang-node lang-fr">L'Admin Valide le Paiement</span><span class="lang-node lang-ar">يوافق المسؤول على الدفع</span></h3><p><span class="lang-node lang-en lang-active">Our team manually reviews your receipt and confirms within 15–45 minutes. Fraud detection runs automatically.</span><span class="lang-node lang-ar">يراجع فريقنا إيصالك يدوياً ويؤكد خلال 15-45 دقيقة. يعمل كشف الاحتيال تلقائياً.</span></p></div>
+    </div>
+    <div class="tl-row reveal">
+      <div class="tl-card tl-left"><div class="tl-step">Step 05</div><h3><span class="lang-node lang-en lang-active">Logistics Dispatched</span><span class="lang-node lang-fr">Logistique Envoyée</span><span class="lang-node lang-ar">إرسال وسائل النقل</span></h3><p><span class="lang-node lang-en lang-active">A verified driver is assigned to your order and heads to the seller's location for pickup.</span><span class="lang-node lang-ar">يُسند سائق محقق منه لطلبك ويتجه إلى موقع البائع للاستلام.</span></p></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-truck-fast"></i></div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-row even reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot"><i class="fa-solid fa-qrcode"></i></div></div>
+      <div class="tl-card tl-right"><div class="tl-step">Step 06</div><h3><span class="lang-node lang-en lang-active">Receive & Confirm with QR</span><span class="lang-node lang-fr">Recevoir et Confirmer par QR</span><span class="lang-node lang-ar">استلم وأكد بـQR</span></h3><p><span class="lang-node lang-en lang-active">Inspect your animal first. If satisfied, show your QR code to the driver to complete the handover.</span><span class="lang-node lang-ar">افحص ماشيتك أولاً. إذا كنت راضياً، أظهر رمز QR الخاص بك للسائق لإتمام التسليم.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GROUP PURCHASE
+     ============================================================ -->
 <section class="sec group-sec" id="group">
   <div class="group-inner">
-    <div class="group-text reveal-l"> ... (text unchanged) ... </div>
-    <div class="group-phones reveal-r">
-      <div class="phone-wrap small">
-        <div class="phone-frame"><div class="phone-notch-dot"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" style="width:100%;height:100%;object-fit:cover;"></div></div>
+    <div class="group-text reveal-l">
+      <div class="sec-label">
+        <span class="lang-node lang-en lang-active">Unique Feature</span>
+        <span class="lang-node lang-fr">Fonctionnalité Unique</span>
+        <span class="lang-node lang-ar">ميزة فريدة</span>
       </div>
-      <div class="phone-wrap small">
-        <div class="phone-frame"><div class="phone-notch-dot"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361418/sbl6mstr0hkhlr6dywju.jpg" style="width:100%;height:100%;object-fit:cover;"></div></div>
+      <h2 class="sec-title">
+        <span class="lang-node lang-en lang-active">Revolutionary Group Purchase</span>
+        <span class="lang-node lang-fr">L'Achat Groupé Révolutionnaire</span>
+        <span class="lang-node lang-ar">الشراء الجماعي الثوري</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="lang-node lang-en lang-active">Can't afford a full camel alone? Don't need an entire cow? Almarbat lets you buy fractional shares in premium livestock alongside other trusted buyers.</span>
+        <span class="lang-node lang-fr">Vous ne pouvez pas vous offrir un chameau entier? Almarbat vous permet d'acheter des parts fractionnées en bétail premium avec d'autres acheteurs de confiance.</span>
+        <span class="lang-node lang-ar">لا تستطيع تحمل تكلفة جمل كامل بمفردك؟ يتيح لك المربط شراء حصص جزئية في ماشية متميزة مع مشترين موثوقين آخرين.</span>
+      </p>
+      <div style="margin-top:28px">
+        <div class="group-feat">
+          <div class="group-feat-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+          <div class="group-feat-text">
+            <h4><span class="lang-node lang-en lang-active">Flexible Fractional Investment</span><span class="lang-node lang-fr">Investissement Fractionné Flexible</span><span class="lang-node lang-ar">استثمار جزئي مرن</span></h4>
+            <p><span class="lang-node lang-en lang-active">Pay for exactly the share you need — 1/2, 1/4, or custom fractions set by the pool admin.</span><span class="lang-node lang-ar">ادفع لحصتك بالضبط — نصف أو ربع أو كسور مخصصة يحددها مسؤول المجموعة.</span></p>
+          </div>
+        </div>
+        <div class="group-feat">
+          <div class="group-feat-icon"><i class="fa-solid fa-rotate-left"></i></div>
+          <div class="group-feat-text">
+            <h4><span class="lang-node lang-en lang-active">Auto-Refund on Timeout</span><span class="lang-node lang-fr">Remboursement Automatique</span><span class="lang-node lang-ar">استرداد تلقائي عند انتهاء المهلة</span></h4>
+            <p><span class="lang-node lang-en lang-active">If the pool doesn't fill in time, every participant gets a full refund automatically. Zero risk.</span><span class="lang-node lang-ar">إذا لم تكتمل المجموعة في الوقت المحدد، يحصل كل مشارك على استرداد كامل تلقائياً. لا مخاطر.</span></p>
+          </div>
+        </div>
+        <div class="group-feat">
+          <div class="group-feat-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="group-feat-text">
+            <h4><span class="lang-node lang-en lang-active">Group Leader Distribution</span><span class="lang-node lang-fr">Distribution par le Chef de Groupe</span><span class="lang-node lang-ar">توزيع بواسطة قائد المجموعة</span></h4>
+            <p><span class="lang-node lang-en lang-active">A designated group leader handles final distribution of shares, coordinated through the platform.</span><span class="lang-node lang-ar">يتولى قائد المجموعة المعين التوزيع النهائي للحصص، منسقاً عبر المنصة.</span></p>
+          </div>
+        </div>
       </div>
-      <div class="phone-wrap small">
-        <div class="phone-frame"><div class="phone-notch-dot"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361501/mzs17k6lejcacdymr7t4.jpg" style="width:100%;height:100%;object-fit:cover;"></div></div>
+    </div>
+
+    <div class="reveal-r" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+      <!-- Phone 1 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+      <!-- Phone 2 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361418/sbl6mstr0hkhlr6dywju.jpg" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+      <!-- Phone 3 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361501/mzs17k6lejcacdymr7t4.jpg" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTALS - already perfect, kept as-is -->
-<!-- ... rest of the HTML (security, testimonials, stats, download, faq, contact, footer) remains identical to original ... -->
+<!-- ============================================================
+     PAYMENT
+     ============================================================ -->
+<section class="sec payment-sec" id="payment">
+  <div class="sec-head reveal">
+    <div class="sec-label">
+      <span class="lang-node lang-en lang-active">Local Payment Support</span>
+      <span class="lang-node lang-fr">Paiement Local</span>
+      <span class="lang-node lang-ar">دعم الدفع المحلي</span>
+    </div>
+    <h2 class="sec-title">
+      <span class="lang-node lang-en lang-active">Pay the Way Mauritania Does</span>
+      <span class="lang-node lang-fr">Payez à la Manière Mauritanienne</span>
+      <span class="lang-node lang-ar">ادفع بالطريقة الموريتانية</span>
+    </h2>
+    <p class="sec-sub">
+      <span class="lang-node lang-en lang-active">We support all major local digital wallets. No bank account or international card required.</span>
+      <span class="lang-node lang-fr">Nous acceptons tous les principaux portefeuilles numériques locaux. Aucun compte bancaire international requis.</span>
+      <span class="lang-node lang-ar">ندعم جميع المحافظ الرقمية المحلية الرئيسية. لا حاجة لحساب بنكي أو بطاقة دولية.</span>
+    </p>
+  </div>
+  <div class="pay-logos reveal">
+    <div class="pay-logo"><i class="fa-solid fa-mobile-screen"></i> Bankily</div>
+    <div class="pay-logo"><i class="fa-solid fa-wallet"></i> Masrivi</div>
+    <div class="pay-logo"><i class="fa-solid fa-building-columns"></i> Bimbank</div>
+    <div class="pay-logo"><i class="fa-solid fa-money-bill-transfer"></i> Sedad</div>
+  </div>
+  <div class="pay-flow reveal">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-icon"><i class="fa-solid fa-qrcode"></i></div>
+      <h4><span class="lang-node lang-en lang-active">Transfer Funds</span><span class="lang-node lang-fr">Transférer les Fonds</span><span class="lang-node lang-ar">تحويل الأموال</span></h4>
+      <p><span class="lang-node lang-en lang-active">Send payment to our verified account using your preferred local wallet app.</span><span class="lang-node lang-ar">أرسل الدفعة إلى حسابنا الموثق باستخدام تطبيق المحفظة المحلية المفضل لديك.</span></p>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <h4><span class="lang-node lang-en lang-active">Upload Screenshot</span><span class="lang-node lang-fr">Téléverser le Reçu</span><span class="lang-node lang-ar">رفع لقطة الشاشة</span></h4>
+      <p><span class="lang-node lang-en lang-active">Screenshot your receipt and upload it directly inside the Almarbat app order panel.</span><span class="lang-node lang-ar">التقط صورة للإيصال وارفعها مباشرة داخل لوحة طلب تطبيق المربط.</span></p>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h4><span class="lang-node lang-en lang-active">Admin Reviews</span><span class="lang-node lang-fr">Vérification Admin</span><span class="lang-node lang-ar">مراجعة المسؤول</span></h4>
+      <p><span class="lang-node lang-en lang-active">Our team manually verifies your receipt against banking records within 15–45 minutes.</span><span class="lang-node lang-ar">يتحقق فريقنا يدوياً من إيصالك مقابل السجلات المصرفية خلال 15-45 دقيقة.</span></p>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <h4><span class="lang-node lang-en lang-active">Order Released</span><span class="lang-node lang-fr">Commande Libérée</span><span class="lang-node lang-ar">تحرير الطلب</span></h4>
+      <p><span class="lang-node lang-en lang-active">Once verified, your order is released to logistics and a driver is assigned to your delivery.</span><span class="lang-node lang-ar">بمجرد التحقق، يُحرَّر طلبك إلى اللوجستيات ويُسند سائق لتوصيلك.</span></p>
+    </div>
+  </div>
+</section>
 
-<!-- Full remaining HTML omitted here for brevity in this response but is identical except for the phone fixes above and improved media queries. The complete fixed file is ready. -->
+<!-- ============================================================
+     PORTALS (Seller / Driver / Buyer)
+     ============================================================ -->
+<section class="sec portals-sec" id="portals">
+  <div class="sec-head reveal">
+    <div class="sec-label">
+      <span class="lang-node lang-en lang-active">Role-Based Access</span>
+      <span class="lang-node lang-fr">Accès par Rôle</span>
+      <span class="lang-node lang-ar">الوصول حسب الدور</span>
+    </div>
+    <h2 class="sec-title">
+      <span class="lang-node lang-en lang-active">Purpose-Built Portals</span>
+      <span class="lang-node lang-fr">Portails Dédiés</span>
+      <span class="lang-node lang-ar">بوابات مصممة لغرض محدد</span>
+    </h2>
+  </div>
+
+  <div class="portal-tabs">
+    <button class="p-tab active" data-portal="seller">
+      <i class="fa-solid fa-store"></i>
+      <span class="lang-node lang-en lang-active"> Seller Portal</span>
+      <span class="lang-node lang-fr"> Portail Vendeur</span>
+      <span class="lang-node lang-ar"> بوابة البائع</span>
+    </button>
+    <button class="p-tab" data-portal="driver">
+      <i class="fa-solid fa-truck-fast"></i>
+      <span class="lang-node lang-en lang-active"> Driver Portal</span>
+      <span class="lang-node lang-fr"> Portail Chauffeur</span>
+      <span class="lang-node lang-ar"> بوابة السائق</span>
+    </button>
+    <button class="p-tab" data-portal="buyer">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span class="lang-node lang-en lang-active"> Buyer Portal</span>
+      <span class="lang-node lang-fr"> Portail Acheteur</span>
+      <span class="lang-node lang-ar"> بوابة المشتري</span>
+    </button>
+  </div>
+
+  <!-- SELLER -->
+  <div class="portal-panel active" id="portal-seller">
+    <div class="portal-desc reveal-l">
+      <div class="sec-label">
+        <span class="lang-node lang-en lang-active">Seller Portal</span>
+        <span class="lang-node lang-fr">Portail Vendeur</span>
+        <span class="lang-node lang-ar">بوابة البائع</span>
+      </div>
+      <h2 class="sec-title">
+        <span class="lang-node lang-en lang-active">Manage Your Livestock Business</span>
+        <span class="lang-node lang-fr">Gérez votre Élevage</span>
+        <span class="lang-node lang-ar">أدر مشروع مواشيك</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="lang-node lang-en lang-active">List animals, track sales, manage deliveries, and withdraw earnings — all from one clean seller dashboard.</span>
+        <span class="lang-node lang-fr">Publiez des annonces, suivez les ventes, gérez les livraisons et retirez vos revenus — depuis un tableau de bord vendeur épuré.</span>
+        <span class="lang-node lang-ar">أضف الحيوانات، تتبع المبيعات، أدر التوصيلات، واسحب أرباحك — كل ذلك من لوحة تحكم بائع نظيفة واحدة.</span>
+      </p>
+      <ul>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Add and edit livestock listings with photos</span><span class="lang-node lang-ar">أضف وعدّل إعلانات الماشية مع الصور</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Real-time sales notifications and order status</span><span class="lang-node lang-ar">إشعارات المبيعات وحالة الطلب في الوقت الفعلي</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Earnings tracking with bar charts</span><span class="lang-node lang-ar">تتبع الأرباح بمخططات شريطية</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Fast withdrawals to Bankily or Masrivi</span><span class="lang-node lang-ar">سحب سريع إلى Bankily أو Masrivi</span></li>
+      </ul>
+    </div>
+    <div class="portal-phone-outer reveal-r">
+      <div class="big-phone">
+        <div class="big-phone-notch"></div>
+        <div class="big-screen">
+          <div class="bscreen-status">
+            <span>Almarbat Seller</span>
+            <span style="color:var(--sand)">★ 4.8 Rating</span>
+          </div>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361592/mfln70maw63xf3c2zlp1.jpg" alt="Seller Portal" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRIVER -->
+  <div class="portal-panel" id="portal-driver">
+    <div class="portal-desc reveal-l">
+      <div class="sec-label">
+        <span class="lang-node lang-en lang-active">Driver Portal</span>
+        <span class="lang-node lang-fr">Portail Chauffeur</span>
+        <span class="lang-node lang-ar">بوابة السائق</span>
+      </div>
+      <h2 class="sec-title">
+        <span class="lang-node lang-en lang-active">Your Logistics Command Center</span>
+        <span class="lang-node lang-fr">Votre Centre de Commande Logistique</span>
+        <span class="lang-node lang-ar">مركز القيادة اللوجستي</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="lang-node lang-en lang-active">Accept missions, view pickup coordinates, complete QR handover, and get paid — all from your driver app.</span>
+        <span class="lang-node lang-fr">Acceptez des missions, visualisez les coordonnées, complétez la remise par QR et soyez payé — depuis votre app chauffeur.</span>
+        <span class="lang-node lang-ar">قبل المهام، اعرض إحداثيات الاستلام، أكمل التسليم بـQR، واحصل على الدفع — كل ذلك من تطبيق السائق.</span>
+      </p>
+      <ul>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Accept or decline delivery missions</span><span class="lang-node lang-ar">قبول أو رفض مهام التوصيل</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">GPS route to pickup and drop-off points</span><span class="lang-node lang-ar">مسار GPS إلى نقاط الاستلام والتسليم</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">QR scan to confirm recipient handover</span><span class="lang-node lang-ar">مسح QR لتأكيد تسليم المستلم</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Delivery history and earnings breakdown</span><span class="lang-node lang-ar">سجل التوصيل وتفاصيل الأرباح</span></li>
+      </ul>
+    </div>
+    <div class="portal-phone-outer reveal-r">
+      <div class="big-phone">
+        <div class="big-phone-notch"></div>
+        <div class="big-screen">
+          <div class="bscreen-status"><span>Driver: Moustapha S.</span><span style="color:#4ade80">● Online</span></div>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781361644/frjatz8ahemcy70j71vk.jpg" alt="Driver Portal" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUYER -->
+  <div class="portal-panel" id="portal-buyer">
+    <div class="portal-desc reveal-l">
+      <div class="sec-label">
+        <span class="lang-node lang-en lang-active">Buyer Portal</span>
+        <span class="lang-node lang-fr">Portail Acheteur</span>
+        <span class="lang-node lang-ar">بوابة المشتري</span>
+      </div>
+      <h2 class="sec-title">
+        <span class="lang-node lang-en lang-active">Your Complete Buying Hub</span>
+        <span class="lang-node lang-fr">Votre Hub d'Achat Complet</span>
+        <span class="lang-node lang-ar">مركز الشراء الكامل</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="lang-node lang-en lang-active">View orders, track active group purchases, upload payment receipts, and follow your delivery — one app, everything covered.</span>
+        <span class="lang-node lang-fr">Consultez vos commandes, suivez les achats groupés, téléversez vos reçus et suivez votre livraison — une seule application.</span>
+        <span class="lang-node lang-ar">اعرض الطلبات، تتبع مشتريات المجموعة النشطة، ارفع إيصالات الدفع، وتابع توصيلك — تطبيق واحد، كل شيء مشمول.</span>
+      </p>
+      <ul>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Full order history with status badges</span><span class="lang-node lang-ar">سجل طلبات كامل مع شارات الحالة</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Active group pool progress bars</span><span class="lang-node lang-ar">أشرطة تقدم مجموعة الشراء النشطة</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">One-tap payment receipt upload</span><span class="lang-node lang-ar">رفع إيصال الدفع بنقرة واحدة</span></li>
+        <li><i class="fa-solid fa-circle-check"></i><span class="lang-node lang-en lang-active">Live delivery tracking with QR confirm</span><span class="lang-node lang-ar">تتبع التوصيل المباشر مع تأكيد QR</span></li>
+      </ul>
+    </div>
+    <div class="portal-phone-outer reveal-r">
+      <div class="big-phone">
+        <div class="big-phone-notch"></div>
+        <div class="big-screen">
+          <div class="bscreen-status"><span>Ahmed Ould B.</span><span style="color:var(--sand)">Wallet: 4,500 MRU</span></div>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" alt="Buyer Portal" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECURITY
+     ============================================================ -->
+<section class="sec security-sec" id="security">
+  <div class="sec-head reveal" style="position:relative;z-index:1">
+    <div class="sec-label" style="color:var(--sand)"><span class="lang-node lang-en lang-active">Security</span><span class="lang-node lang-fr">Sécurité</span><span class="lang-node lang-ar">الأمان</span></div>
+    <h2 class="sec-title" style="color:var(--white)">
+      <span class="lang-node lang-en lang-active">Bank-Grade Protection</span>
+      <span class="lang-node lang-fr">Protection de Niveau Bancaire</span>
+      <span class="lang-node lang-ar">حماية على مستوى البنوك</span>
+    </h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.55)">
+      <span class="lang-node lang-en lang-active">Every transaction, every user, every listing is protected by multiple layers of verification and encryption.</span>
+      <span class="lang-node lang-fr">Chaque transaction, utilisateur et annonce est protégé par plusieurs couches de vérification et de chiffrement.</span>
+      <span class="lang-node lang-ar">كل معاملة وكل مستخدم وكل إعلان محمي بطبقات متعددة من التحقق والتشفير.</span>
+    </p>
+  </div>
+  <div class="sec-grid-3 reveal">
+    <div class="sec-card"><i class="fa-solid fa-key"></i><h3>OTP Authentication</h3><p><span class="lang-node lang-en lang-active">Every login and transaction is secured with a one-time SMS code. No unauthorized access, period.</span><span class="lang-node lang-ar">كل تسجيل دخول ومعاملة مؤمنة برمز SMS لمرة واحدة. لا وصول غير مصرح به، نقطة.</span></p></div>
+    <div class="sec-card"><i class="fa-solid fa-eye-slash"></i><h3>Fraud Detection</h3><p><span class="lang-node lang-en lang-active">AI-powered systems analyze every payment receipt upload to detect duplicates and forgeries automatically.</span><span class="lang-node lang-ar">أنظمة مدعومة بالذكاء الاصطناعي تحلل كل رفع لإيصال الدفع للكشف تلقائياً عن التكرار والتزوير.</span></p></div>
+    <div class="sec-card"><i class="fa-solid fa-server"></i><h3>Encrypted Infrastructure</h3><p><span class="lang-node lang-en lang-active">End-to-end encryption protects all user data and financial records from external threats at all times.</span><span class="lang-node lang-ar">التشفير الكامل يحمي جميع بيانات المستخدمين والسجلات المالية من التهديدات الخارجية في جميع الأوقات.</span></p></div>
+    <div class="sec-card"><i class="fa-solid fa-qrcode"></i><h3>QR Delivery Confirmation</h3><p><span class="lang-node lang-en lang-active">Dynamic QR codes ensure only the rightful recipient can sign off on delivery. No QR, no handover.</span><span class="lang-node lang-ar">رموز QR الديناميكية تضمن أن المستلم الشرعي فقط يمكنه توقيع التسليم. لا QR، لا تسليم.</span></p></div>
+    <div class="sec-card"><i class="fa-solid fa-user-check"></i><h3>Identity Verification</h3><p><span class="lang-node lang-en lang-active">All sellers and drivers submit national ID for manual review before gaining platform access.</span><span class="lang-node lang-ar">يقدم جميع البائعين والسائقين الهوية الوطنية للمراجعة اليدوية قبل الحصول على وصول المنصة.</span></p></div>
+    <div class="sec-card"><i class="fa-solid fa-clock-rotate-left"></i><h3>24/7 Admin Oversight</h3><p><span class="lang-node lang-en lang-active">A dedicated operations team monitors all transactions around the clock. Real humans, real accountability.</span><span class="lang-node lang-ar">فريق عمليات مخصص يراقب جميع المعاملات على مدار الساعة. بشر حقيقيون، مساءلة حقيقية.</span></p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="sec testi-sec" id="testimonials">
+  <div class="sec-head reveal">
+    <div class="sec-label"><span class="lang-node lang-en lang-active">What Users Say</span><span class="lang-node lang-fr">Ce Que Disent les Utilisateurs</span><span class="lang-node lang-ar">ما يقوله المستخدمون</span></div>
+    <h2 class="sec-title"><span class="lang-node lang-en lang-active">Trusted by Mauritanians</span><span class="lang-node lang-fr">Approuvé par les Mauritaniens</span><span class="lang-node lang-ar">موثوق به من الموريتانيين</span></h2>
+  </div>
+  <div class="testi-track reveal">
+    <div class="testi-slide active">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"The group purchase feature let my family share the cost of a premium ram with others in Nouakchott. Everything was smooth — the payment, the verification, the delivery."</blockquote>
+      <div class="testi-author">Ahmed Ould B. — Verified Buyer, Nouakchott</div>
+    </div>
+    <div class="testi-slide">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"As a seller in Néma, Almarbat opened up the whole country to me. I list animals on my phone, buyers from Nouakchott pay via Bankily, and delivery handles itself."</blockquote>
+      <div class="testi-author">Moustapha S. — Verified Seller, Néma</div>
+    </div>
+    <div class="testi-slide">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"The QR code system protects drivers like me completely. No arguments about whether I delivered — the scan is proof. It's the most professional livestock app in Mauritania."</blockquote>
+      <div class="testi-author">Fatimetou Z. — Delivery Driver, Rosso</div>
+    </div>
+  </div>
+  <div class="t-dots reveal">
+    <div class="t-dot active" onclick="setSlide(0)"></div>
+    <div class="t-dot" onclick="setSlide(1)"></div>
+    <div class="t-dot" onclick="setSlide(2)"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section class="sec stats-sec">
+  <div class="stats-inner reveal">
+    <div class="stat-big"><h2 class="counter" data-target="34000">0</h2><p><span class="lang-node lang-en lang-active">Registered Users</span><span class="lang-node lang-fr">Utilisateurs Inscrits</span><span class="lang-node lang-ar">المستخدمون المسجلون</span></p></div>
+    <div class="stat-big"><h2 class="counter" data-target="1800">0</h2><p><span class="lang-node lang-en lang-active">Verified Sellers</span><span class="lang-node lang-fr">Vendeurs Vérifiés</span><span class="lang-node lang-ar">البائعون الموثوقون</span></p></div>
+    <div class="stat-big"><h2 class="counter" data-target="45000">0</h2><p><span class="lang-node lang-en lang-active">Deliveries Completed</span><span class="lang-node lang-fr">Livraisons Complétées</span><span class="lang-node lang-ar">التوصيلات المكتملة</span></p></div>
+    <div class="stat-big"><h2 class="counter" data-target="3200000">0</h2><p><span class="lang-node lang-en lang-active">MRU Volume Traded</span><span class="lang-node lang-fr">Volume Échangé (MRU)</span><span class="lang-node lang-ar">حجم التداول (MRU)</span></p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DOWNLOAD CTA
+     ============================================================ -->
+<section class="sec dl-cta-sec" id="download">
+  <h2>
+    <span class="lang-node lang-en lang-active">Start Trading Livestock Today</span>
+    <span class="lang-node lang-fr">Commencez à Trader du Bétail Aujourd'hui</span>
+    <span class="lang-node lang-ar">ابدأ تداول المواشي اليوم</span>
+  </h2>
+  <p>
+    <span class="lang-node lang-en lang-active">Join thousands of Mauritanians buying, selling, and sharing livestock securely on Almarbat.</span>
+    <span class="lang-node lang-fr">Rejoignez des milliers de Mauritaniens qui achètent, vendent et partagent du bétail en toute sécurité sur Almarbat.</span>
+    <span class="lang-node lang-ar">انضم إلى آلاف الموريتانيين الذين يشترون ويبيعون ويتشاركون الماشية بأمان على المربط.</span>
+  </p>
+  <div class="store-btns">
+    <a href="#" class="store-btn"><i class="fa-brands fa-google-play"></i><div><div style="font-size:.65rem;opacity:.7">GET IT ON</div><div>Google Play</div></div></a>
+    <a href="#" class="store-btn"><i class="fa-brands fa-apple" style="font-size:1.6rem"></i><div><div style="font-size:.65rem;opacity:.7">DOWNLOAD ON THE</div><div>App Store</div></div></a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="sec faq-sec" id="faq">
+  <div class="sec-head reveal">
+    <div class="sec-label"><span class="lang-node lang-en lang-active">FAQ</span><span class="lang-node lang-fr">FAQ</span><span class="lang-node lang-ar">أسئلة متكررة</span></div>
+    <h2 class="sec-title"><span class="lang-node lang-en lang-active">Frequently Asked Questions</span><span class="lang-node lang-fr">Questions Fréquentes</span><span class="lang-node lang-ar">الأسئلة الأكثر شيوعاً</span></h2>
+  </div>
+  <div class="faq-search reveal">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="faqSearch" placeholder="Search questions...">
+  </div>
+  <div class="faq-list reveal" id="faqList">
+    <div class="faq-item"><div class="faq-q"><span>How do I purchase livestock on Almarbat?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Select an animal from the app, tap Reserve to lock it, then transfer payment via Bankily, Masrivi, Bimbank, or Sedad. Upload your receipt screenshot and our team verifies it within 15–45 minutes.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>What payment apps are accepted?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>We accept Bankily, Masrivi, Bimbank, and Sedad — all major Mauritanian digital wallets.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>How does Group Purchase work?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Admin users create pools for large animals like camels. You buy a fractional share (1/2, 1/4, etc.). Once the pool is full, the order is placed. If it doesn't fill in time, everyone gets a full refund automatically.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>What if the group pool doesn't fill up?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>If the pool's time window expires without reaching the funding target, all contributions are refunded automatically to each participant's wallet. Zero risk.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>Are sellers verified?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Yes. Every seller must submit their national ID and proof of location to our admin team before they can list anything. No verification, no access.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>How long does admin payment verification take?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Our team reviews receipts 24/7. Most verifications complete within 15 to 45 minutes from upload.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>How is delivery handled safely?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Registered, verified drivers handle all deliveries using vehicles suited for livestock transport. You track your delivery live, and the handover is confirmed with a QR code scan.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>What is the QR code used for?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>The QR code is your unique delivery confirmation key. The driver can only mark the delivery complete after you show them your code — after you've inspected the animal first.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>Can I inspect the animal before confirming?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Absolutely. The QR confirmation only happens after you inspect and are satisfied. You're never forced to accept an animal that doesn't match its listing.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>Are there fees for buyers?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Registration is completely free. Small logistics fees apply depending on the delivery distance, shown transparently before you confirm your order.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>Which regions does Almarbat serve?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>We currently serve Nouakchott, Rosso, Néma, Nouadhibou, and surrounding rural areas. We're expanding steadily across Mauritania.</p></div></div>
+    <div class="faq-item"><div class="faq-q"><span>Does the app work with poor connectivity?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>Yes. The app caches your orders and data locally, so you can browse and track even when you have limited or no signal. It syncs when connectivity returns.</p></div></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="sec contact-sec" id="contact">
+  <div class="sec-head reveal">
+    <div class="sec-label"><span class="lang-node lang-en lang-active">Get in Touch</span><span class="lang-node lang-fr">Contactez-Nous</span><span class="lang-node lang-ar">تواصل معنا</span></div>
+    <h2 class="sec-title"><span class="lang-node lang-en lang-active">We're Here to Help</span><span class="lang-node lang-fr">Nous Sommes Là pour Vous Aider</span><span class="lang-node lang-ar">نحن هنا للمساعدة</span></h2>
+    <p class="sec-sub"><span class="lang-node lang-en lang-active">Our support team is available 24/7 across all channels. Reach us however is easiest for you.</span><span class="lang-node lang-fr">Notre équipe de support est disponible 24h/24 sur tous les canaux.</span><span class="lang-node lang-ar">فريق الدعم لدينا متاح على مدار الساعة عبر جميع القنوات. تواصل معنا بالطريقة الأسهل لك.</span></p>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="contact-cards">
+      <a href="https://wa.me/22200000000" class="c-card">
+        <div class="c-icon" style="background:rgba(37,211,102,.1);color:#25d366"><i class="fa-brands fa-whatsapp"></i></div>
+        <div><h4>WhatsApp</h4><p>+222 00 00 00 00</p></div>
+      </a>
+      <div class="c-card">
+        <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
+        <div><h4><span class="lang-node lang-en lang-active">Support Hotline</span><span class="lang-node lang-fr">Hotline de Support</span><span class="lang-node lang-ar">خط دعم</span></h4><p>+222 44 44 44 44</p></div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div><h4>Email</h4><p>support@almarbat.mr</p></div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="fa-solid fa-clock"></i></div>
+        <div><h4><span class="lang-node lang-en lang-active">Support Hours</span><span class="lang-node lang-fr">Heures de Support</span><span class="lang-node lang-ar">ساعات الدعم</span></h4><p><span class="lang-node lang-en lang-active">24 hours, 7 days a week</span><span class="lang-node lang-fr">24h/24, 7j/7</span><span class="lang-node lang-ar">24 ساعة، 7 أيام في الأسبوع</span></p></div>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <form id="contactForm">
+        <div class="contact-form-grid">
+          <div class="fg">
+            <label><span class="lang-node lang-en lang-active">Full Name</span><span class="lang-node lang-fr">Nom Complet</span><span class="lang-node lang-ar">الاسم الكامل</span></label>
+            <input type="text" class="fc" id="fname" required autocomplete="name">
+          </div>
+          <div class="fg">
+            <label><span class="lang-node lang-en lang-active">Phone Number</span><span class="lang-node lang-fr">Numéro de Téléphone</span><span class="lang-node lang-ar">رقم الهاتف</span></label>
+            <input type="tel" class="fc" required autocomplete="tel">
+          </div>
+          <div class="fg">
+            <label><span class="lang-node lang-en lang-active">I am a</span><span class="lang-node lang-fr">Je suis</span><span class="lang-node lang-ar">أنا</span></label>
+            <select class="fc">
+              <option>Buyer / مشتري</option>
+              <option>Seller / بائع</option>
+              <option>Driver / سائق</option>
+              <option>Other / أخرى</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" class="fc" autocomplete="email">
+          </div>
+          <div class="fg full">
+            <label><span class="lang-node lang-en lang-active">Message</span><span class="lang-node lang-fr">Message</span><span class="lang-node lang-ar">الرسالة</span></label>
+            <textarea class="fc" required></textarea>
+          </div>
+          <div class="fg full">
+            <button type="submit" class="btn btn-forest" style="width:100%;justify-content:center;padding:14px">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span class="lang-node lang-en lang-active">Send Message</span>
+              <span class="lang-node lang-fr">Envoyer le Message</span>
+              <span class="lang-node lang-ar">إرسال الرسالة</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><div class="logo-icon"><i class="fa-solid fa-horse"></i></div> ALMARBAT</div>
+      <p class="footer-tagline"><span class="lang-node lang-en lang-active">The trusted livestock marketplace of Mauritania — connecting buyers, sellers, and drivers with transparency and security.</span><span class="lang-node lang-fr">Le marché de confiance du bétail en Mauritanie — reliant acheteurs, vendeurs et chauffeurs.</span><span class="lang-node lang-ar">سوق المواشي الموثوق في موريتانيا — يربط المشترين والبائعين والسائقين بشفافية وأمان.</span></p>
+    </div>
+    <div class="footer-col">
+      <h4><span class="lang-node lang-en lang-active">Platform</span><span class="lang-node lang-fr">Plateforme</span><span class="lang-node lang-ar">المنصة</span></h4>
+      <ul>
+        <li><a href="#why"><span class="lang-node lang-en lang-active">Why Almarbat</span><span class="lang-node lang-fr">Pourquoi Almarbat</span><span class="lang-node lang-ar">لماذا المربط</span></a></li>
+        <li><a href="#how"><span class="lang-node lang-en lang-active">How It Works</span><span class="lang-node lang-fr">Comment ça Marche</span><span class="lang-node lang-ar">كيف تعمل</span></a></li>
+        <li><a href="#group"><span class="lang-node lang-en lang-active">Group Purchase</span><span class="lang-node lang-fr">Achat Groupé</span><span class="lang-node lang-ar">الشراء الجماعي</span></a></li>
+        <li><a href="#download"><span class="lang-node lang-en lang-active">Download App</span><span class="lang-node lang-fr">Télécharger</span><span class="lang-node lang-ar">تحميل التطبيق</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4><span class="lang-node lang-en lang-active">Portals</span><span class="lang-node lang-fr">Portails</span><span class="lang-node lang-ar">البوابات</span></h4>
+      <ul>
+        <li><a href="#portals"><span class="lang-node lang-en lang-active">Seller Portal</span><span class="lang-node lang-fr">Portail Vendeur</span><span class="lang-node lang-ar">بوابة البائع</span></a></li>
+        <li><a href="#portals"><span class="lang-node lang-en lang-active">Driver Portal</span><span class="lang-node lang-fr">Portail Chauffeur</span><span class="lang-node lang-ar">بوابة السائق</span></a></li>
+        <li><a href="#portals"><span class="lang-node lang-en lang-active">Buyer Portal</span><span class="lang-node lang-fr">Portail Acheteur</span><span class="lang-node lang-ar">بوابة المشتري</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4><span class="lang-node lang-en lang-active">Legal</span><span class="lang-node lang-fr">Légal</span><span class="lang-node lang-ar">القانونية</span></h4>
+      <ul>
+        <li><a href="#"><span class="lang-node lang-en lang-active">Privacy Policy</span><span class="lang-node lang-fr">Politique de Confidentialité</span><span class="lang-node lang-ar">سياسة الخصوصية</span></a></li>
+        <li><a href="#"><span class="lang-node lang-en lang-active">Terms of Service</span><span class="lang-node lang-fr">Conditions d'Utilisation</span><span class="lang-node lang-ar">شروط الخدمة</span></a></li>
+        <li><a href="#security"><span class="lang-node lang-en lang-active">Security</span><span class="lang-node lang-fr">Sécurité</span><span class="lang-node lang-ar">الأمان</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Almarbat. <span class="lang-node lang-en lang-active">All rights reserved. Built for Mauritanian livestock commerce.</span><span class="lang-node lang-fr">Tous droits réservés. Conçu pour le commerce du bétail mauritanien.</span><span class="lang-node lang-ar">جميع الحقوق محفوظة. مبني لتجارة المواشي الموريتانية.</span></p>
+    <div class="socials">
+      <a href="#" class="soc-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="soc-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" class="soc-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" class="soc-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Done!</span></div>
+
+<!-- Video Modal -->
+<div id="videoModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:10000;align-items:center;justify-content:center;">
+  <div style="position:relative;max-width:90%;max-height:90vh;">
+    <button onclick="closeVideo()" style="position:absolute;top:-50px;right:0;color:white;font-size:2rem;background:none;border:none;cursor:pointer;">×</button>
+    <video id="heroVideo" controls style="width:100%;max-height:85vh;border-radius:12px;" autoplay>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 <script>
-/* All original scripts + minor mobile menu improvements */
+/* ==========================================================
+   HERO SHRINK ON SCROLL
+   ========================================================== */
 const hero = document.getElementById('hero');
 let shrunk = false;
 window.addEventListener('scroll', () => {
-  if(window.scrollY > 80 && !shrunk){ hero.classList.add('shrunk'); shrunk = true; } 
-  else if(window.scrollY <= 20 && shrunk){ hero.classList.remove('shrunk'); shrunk = false; }
+  if(window.scrollY > 80 && !shrunk){
+    hero.classList.add('shrunk');
+    shrunk = true;
+  } else if(window.scrollY <= 20 && shrunk){
+    hero.classList.remove('shrunk');
+    shrunk = false;
+  }
 }, {passive:true});
 
-// Mobile menu, language, reveals, counters, tabs, faq, etc. (original code kept)
-document.getElementById('menuToggle').addEventListener('click', () => {
-  const navMenu = document.getElementById('navMenu');
+/* ==========================================================
+   MOBILE MENU
+   ========================================================== */
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+menuToggle.addEventListener('click', () => {
   navMenu.classList.toggle('open');
-  // ... rest of scripts unchanged
+  menuToggle.innerHTML = navMenu.classList.contains('open')
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
 });
+navMenu.querySelectorAll('.nav-link').forEach(l => {
+  l.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  });
+});
+
+/* ==========================================================
+   LANGUAGE SWITCHER
+   ========================================================== */
+document.getElementById('langSel').addEventListener('change', e => {
+  const lang = e.target.value;
+  document.documentElement.lang = lang;
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-node').forEach(n => {
+    n.classList.remove('lang-active');
+    if(n.classList.contains('lang-'+lang)) n.classList.add('lang-active');
+  });
+});
+
+/* ==========================================================
+   SCROLL REVEAL
+   ========================================================== */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revObs.observe(el));
+
+/* ==========================================================
+   COUNTER ANIMATION
+   ========================================================== */
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const limit = parseInt(el.dataset.target);
+    let val = 0;
+    const step = limit / 80;
+    const timer = setInterval(() => {
+      val = Math.min(val + step, limit);
+      el.textContent = Math.round(val).toLocaleString();
+      if(val >= limit) clearInterval(timer);
+    }, 18);
+    cntObs.unobserve(el);
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
+
+/* ==========================================================
+   GROUP PURCHASE PROGRESS BAR ANIMATION (kept for compatibility)
+   ========================================================== */
+const fillObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ 
+      const gf = document.getElementById('groupFill');
+      if(gf) gf.style.width='75%'; 
+      fillObs.disconnect(); 
+    }
+  });
+}, {threshold:0.3});
+const gf = document.getElementById('groupFill');
+if(gf) fillObs.observe(gf.closest('.device-card') || document.body);
+
+/* ==========================================================
+   COPY SHARE LINK BUTTON
+   ========================================================== */
+const copyBtn = document.getElementById('copyBtn');
+if(copyBtn){
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('https://almarbat.mr/pool/204').catch(()=>{});
+    showToast('Link copied!');
+  });
+}
+
+/* ==========================================================
+   PORTAL TABS
+   ========================================================== */
+document.querySelectorAll('.p-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const id = tab.dataset.portal;
+    document.querySelectorAll('.p-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.portal-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('portal-'+id).classList.add('active');
+    // re-trigger reveals
+    document.querySelectorAll('#portal-'+id+' .reveal-l, #portal-'+id+' .reveal-r').forEach(el => {
+      el.classList.remove('active');
+      setTimeout(()=>el.classList.add('active'),50);
+    });
+  });
+});
+
+/* ==========================================================
+   FAQ ACCORDION + SEARCH
+   ========================================================== */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+  });
+});
+document.getElementById('faqSearch').addEventListener('input', function(){
+  const val = this.value.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const txt = item.querySelector('.faq-q span').textContent.toLowerCase();
+    item.style.display = txt.includes(val) ? '' : 'none';
+  });
+});
+
+/* ==========================================================
+   TESTIMONIAL SLIDER
+   ========================================================== */
+let slideIdx = 0;
+const slides = document.querySelectorAll('.testi-slide');
+const dots = document.querySelectorAll('.t-dot');
+function setSlide(i){
+  slides[slideIdx].classList.remove('active');
+  dots[slideIdx].classList.remove('active');
+  slideIdx = i;
+  slides[slideIdx].classList.add('active');
+  dots[slideIdx].classList.add('active');
+}
+setInterval(()=>setSlide((slideIdx+1)%slides.length), 6000);
+
+/* ==========================================================
+   CONTACT FORM
+   ========================================================== */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('fname').value;
+  showToast('Message sent! We\'ll be in touch soon, '+name+'.');
+  e.target.reset();
+});
+
+/* ==========================================================
+   TOAST
+   ========================================================== */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+function playVideo() {
+  document.getElementById('videoModal').style.display = 'flex';
+  const video = document.getElementById('heroVideo');
+  video.play().catch(()=>{});
+}
+
+function closeVideo() {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('heroVideo');
+  video.pause();
+  video.currentTime = 0;
+  modal.style.display = 'none';
+}
+
+/* ==========================================================
+   ACTIVE NAV LINK ON SCROLL
+   ========================================================== */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+}, {threshold:0.3});
+sections.forEach(s => navObs.observe(s));
 </script>
 </body>
 </html>
