@@ -77,9 +77,9 @@ span.lang-active{display:inline!important}
    ============================================================ */
 .navbar{
   position:sticky;top:0;z-index:1000;
-  background:var(--glass-bg);
-  backdrop-filter:blur(18px) saturate(180%);
-  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(250,247,240,0.65);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
   border-bottom:1px solid var(--border);
   padding:0 5%;
   display:flex;align-items:center;justify-content:space-between;
@@ -92,7 +92,8 @@ span.lang-active{display:inline!important}
 .nav-link{padding:6px 13px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(--slate);transition:var(--t);white-space:nowrap}
 .nav-link:hover,.nav-link.active{color:var(--forest);background:var(--forest-l)}
 .nav-actions{display:flex;align-items:center;gap:12px}
-.lang-sel{padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--white);font-size:.8rem;font-weight:600;color:var(--slate);outline:none;cursor:pointer}
+.lang-sel{padding:8px 14px;border-radius:30px;border:1px solid var(--border);background:var(--white);font-size:.82rem;font-weight:600;color:var(--slate);outline:none;cursor:pointer;transition:var(--t);box-shadow:var(--shadow-sm)} 
+.lang-sel:hover{border-color:var(--forest);transform:scale(1.02)}
 .menu-toggle{display:none;font-size:1.4rem;color:var(--ink);padding:6px}
 .nav-cta{background:var(--forest);color:var(--white)!important;padding:8px 18px;border-radius:8px;font-size:.82rem;font-weight:600}
 .nav-cta:hover{background:var(--forest-d)!important}
@@ -118,7 +119,7 @@ span.lang-active{display:inline!important}
 .hero.shrunk{height:70vh}
 .hero-bg{
   position:absolute;inset:0;
-  background-image:url('https://twr.org/Files/Articles/Africa/2025/Hassaniya%20Article%20500x400.jpg');
+  background-image:url('https://i.pinimg.com/736x/c3/fe/29/c3fe294096bcfc0561746cb60942d57a.jpg');
   background-size:cover;background-position:center;
   transform-origin:center;
   transition:transform .6s var(--ease);
@@ -134,6 +135,8 @@ span.lang-active{display:inline!important}
   position:relative;z-index:2;
   padding:60px 6% 80px;
   max-width:900px;
+  display:flex;
+  flex-direction:column;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
@@ -237,6 +240,7 @@ span.lang-active{display:inline!important}
   border-radius:22px;overflow:hidden;background:var(--cream);
   aspect-ratio:9/19.5;
   display:flex;flex-direction:column;
+  position:relative;
 }
 .pscreen-header{background:var(--forest);padding:12px 10px 8px;color:var(--white);font-size:.65rem;font-weight:700}
 .pscreen-body{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
@@ -259,9 +263,9 @@ span.lang-active{display:inline!important}
 .how-sec{background:var(--white)}
 .timeline{max-width:860px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:0}
 .timeline::before{
-  content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
-  background:linear-gradient(to bottom,var(--forest-l),var(--forest),var(--forest-l));
-  transform:translateX(-50%);
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:4px;
+  background:linear-gradient(to bottom,var(--gold),var(--forest),var(--gold));
+  transform:translateX(-50%);border-radius:2px;
 }
 .tl-row{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:0;min-height:120px}
 .tl-row.even .tl-left{order:3}
@@ -307,39 +311,20 @@ span.lang-active{display:inline!important}
 .group-feat-text h4{font-size:.9rem;font-weight:700;color:var(--sand);margin-bottom:3px}
 .group-feat-text p{font-size:.8rem;color:rgba(232,213,163,.6);line-height:1.6}
 
-/* Device showcase card */
-.device-card{
-  background:var(--white);border-radius:var(--r-xl);
-  box-shadow:0 40px 80px rgba(0,0,0,.4);
-  overflow:hidden;border:1px solid rgba(255,255,255,.1);
+.phone-wrap{position:relative;flex:1;max-width:160px}
+.phone-frame{
+  width:100%;
+  background:var(--ink);border-radius:28px;
+  padding:8px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border:2px solid rgba(255,255,255,.1);
 }
-.dc-header{background:var(--forest);padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
-.dc-dots{display:flex;gap:6px}
-.dc-dot{width:10px;height:10px;border-radius:50%}
-.dc-dot:nth-child(1){background:#ff5f56}
-.dc-dot:nth-child(2){background:#ffbd2e}
-.dc-dot:nth-child(3){background:#27c93f}
-.dc-title{font-size:.75rem;color:rgba(255,255,255,.7);font-weight:600}
-.dc-body{padding:24px}
-.pool-status{display:inline-flex;align-items:center;gap:6px;background:rgba(201,130,10,.12);border:1px solid rgba(201,130,10,.25);color:var(--gold);padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;margin-bottom:12px}
-.pool-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.pool-name{font-size:1rem;font-weight:700;color:var(--forest-d);margin-bottom:4px}
-.pool-admin{font-size:.78rem;color:var(--muted);margin-bottom:18px}
-.prog-label{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;margin-bottom:8px}
-.prog-label span:first-child{color:var(--forest-d)}
-.prog-label span:last-child{color:var(--forest)}
-.prog-track{height:10px;border-radius:10px;background:var(--forest-l);overflow:hidden;margin-bottom:10px}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--forest),#1a8a60);border-radius:10px;width:0;transition:width 1.8s var(--ease)}
-.prog-info{font-size:.75rem;color:var(--muted);text-align:right;margin-bottom:20px}
-.avatars{display:flex;align-items:center;gap:-6px;margin-bottom:20px}
-.av{width:32px;height:32px;border-radius:50%;border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--white);margin-left:-8px}
-.av:first-child{margin-left:0}
-.av.av-plus{background:var(--forest-l);color:var(--forest);border-color:var(--forest-l)}
-.share-row{display:flex;align-items:center;gap:10px;background:var(--forest-l);border:1px dashed rgba(10,79,58,.3);border-radius:10px;padding:12px 14px}
-.share-row span{font-size:.78rem;color:var(--forest);font-weight:500;flex:1}
-.share-btn{background:var(--forest);color:var(--white);padding:6px 14px;border-radius:7px;font-size:.75rem;font-weight:700;transition:var(--t)}
-.share-btn:hover{background:var(--forest-d)}
+.phone-screen{
+  border-radius:22px;overflow:hidden;background:var(--cream);
+  aspect-ratio:9/19.5;
+  display:flex;flex-direction:column;
+  position:relative;
+}
 
 @media(max-width:900px){
   .group-inner{grid-template-columns:1fr;gap:40px}
@@ -625,7 +610,12 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
         <span class="lang-node lang-fr">App iOS</span>
         <span class="lang-node lang-ar">تطبيق iOS</span>
       </a>
-     
+      <button onclick="playVideo()" class="btn btn-outline-forest" style="gap:8px">
+        <i class="fa-solid fa-play"></i>
+        <span class="lang-node lang-en lang-active">Watch Platform Video</span>
+        <span class="lang-node lang-fr">Voir la Vidéo</span>
+        <span class="lang-node lang-ar">شاهد الفيديو</span>
+      </button>
     </div>
     <div class="hero-stats">
       <div class="hstat"><h3 class="counter" data-target="15000">0</h3><p class="lang-node lang-en lang-active">Animals Listed</p><p class="lang-node lang-fr">Animaux Inscrits</p><p class="lang-node lang-ar">ماشية مسجلة</p></div>
@@ -728,12 +718,9 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
         <div class="phone-frame">
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
-            <div class="pscreen-header"><i class="fa-solid fa-horse" style="margin-right:6px"></i> Almarbat Feed</div>
-            <div class="pscreen-body">
-              <div class="pscreen-card"><div class="pscreen-tag">Nearby · Sheep</div><div class="pscreen-val">Ram · 55kg · 6,500 MRU</div></div>
-              <div class="pscreen-card"><div class="pscreen-tag">Available · Camels</div><div class="pscreen-val">Camel · 450kg · 48,000 MRU</div></div>
-              <div class="pscreen-card"><div class="pscreen-tag">Group Pool · 75%</div><div class="pscreen-val">Large Camel Pool #204</div><div class="pscreen-bar"><div class="pscreen-fill" style="width:75%"></div></div></div>
-              <div class="pscreen-card"><div class="pscreen-tag">Cows · Rosso</div><div class="pscreen-val">Dairy Cow · 32,000 MRU</div></div>
+           
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://res.cloudinary.com/dobbzalqp/image/upload/v1781360954/ucdgmboltfrdb4nbfueo.jpg" alt="App Feed" style="width:100%;height:100%;object-fit:cover;">
             </div>
           </div>
         </div>
@@ -750,14 +737,8 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
             <div class="pscreen-header"><i class="fa-solid fa-receipt" style="margin-right:6px"></i> Payment Upload</div>
-            <div class="pscreen-body">
-              <div class="pscreen-card"><div class="pscreen-tag">Order #AN-9023</div><div class="pscreen-val">Ram · 6,500 MRU</div></div>
-              <div class="pscreen-card" style="text-align:center;padding:16px 8px">
-                <i class="fa-solid fa-cloud-arrow-up" style="font-size:1.6rem;color:var(--forest);margin-bottom:6px;display:block"></i>
-                <div class="pscreen-tag">Tap to upload receipt</div>
-              </div>
-              <div class="pscreen-card"><div class="pscreen-tag">Payment Method</div><div class="pscreen-val"><i class="fa-solid fa-mobile-screen" style="color:var(--forest)"></i> Bankily</div></div>
-              <div style="background:var(--forest);color:white;border-radius:8px;padding:10px;text-align:center;font-size:.72rem;font-weight:700">Submit Receipt</div>
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://picsum.photos/id/106/300/580" alt="Payment Upload" style="width:100%;height:100%;object-fit:cover;">
             </div>
           </div>
         </div>
@@ -774,21 +755,8 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
           <div class="phone-notch-dot"></div>
           <div class="phone-screen">
             <div class="pscreen-header"><i class="fa-solid fa-truck-fast" style="margin-right:6px"></i> Delivery Track</div>
-            <div class="pscreen-body">
-              <div class="pscreen-card">
-                <div class="pscreen-tag">Status</div>
-                <div class="pscreen-val" style="color:var(--forest)">● In Transit</div>
-              </div>
-              <div class="pscreen-card">
-                <div class="pscreen-tag">ETA</div>
-                <div class="pscreen-val">Arafat Zone 4 · ~35 min</div>
-              </div>
-              <div class="pscreen-card"><div class="pscreen-tag">QR Code Ready</div>
-                <div style="display:flex;align-items:center;justify-content:center;height:40px;background:var(--forest-l);border-radius:6px;margin-top:4px">
-                  <i class="fa-solid fa-qrcode" style="font-size:1.3rem;color:var(--forest)"></i>
-                </div>
-              </div>
-              <div class="pscreen-card"><div class="pscreen-tag">Driver</div><div class="pscreen-val">Moustapha S. ★ 4.9</div></div>
+            <div class="pscreen-body" style="padding:0">
+              <img src="https://picsum.photos/id/201/300/580" alt="Delivery Track" style="width:100%;height:100%;object-fit:cover;">
             </div>
           </div>
         </div>
@@ -898,40 +866,31 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
       </div>
     </div>
 
-    <div class="reveal-r">
-      <div class="device-card">
-        <div class="dc-header">
-          <div class="dc-dots"><div class="dc-dot"></div><div class="dc-dot"></div><div class="dc-dot"></div></div>
-          <span class="dc-title">Almarbat Group Purchase Pool</span>
+    <div class="reveal-r" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+      <!-- Phone 1 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://picsum.photos/id/1015/300/600" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
+          </div>
         </div>
-        <div class="dc-body">
-          <div class="pool-status">Active Pool</div>
-          <div class="pool-name">Large Camel — Pool #204</div>
-          <div class="pool-admin">Organized by Almarbat Admin · Nouakchott</div>
-          <div class="prog-label">
-            <span><span class="lang-node lang-en lang-active">Funding Progress</span><span class="lang-node lang-fr">Progression du Financement</span><span class="lang-node lang-ar">تقدم التمويل</span></span>
-            <span>75%</span>
+      </div>
+      <!-- Phone 2 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://picsum.photos/id/106/300/600" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
           </div>
-          <div class="prog-track"><div class="prog-fill" id="groupFill"></div></div>
-          <div class="prog-info">3 of 4 shares taken · <strong style="color:var(--forest-d)">1 slot remaining</strong></div>
-          <div class="avatars">
-            <div class="av" style="background:#34d399">AH</div>
-            <div class="av" style="background:#60a5fa">MD</div>
-            <div class="av" style="background:#f472b6">BK</div>
-            <div class="av av-plus"><i class="fa-solid fa-plus"></i></div>
-          </div>
-          <div class="share-row">
-            <i class="fa-brands fa-whatsapp" style="color:#25d366;font-size:1.1rem"></i>
-            <span><span class="lang-node lang-en lang-active">Share link to fill this pool faster!</span><span class="lang-node lang-fr">Partagez ce lien pour remplir le pool plus vite!</span><span class="lang-node lang-ar">شارك الرابط لملء هذه المجموعة بشكل أسرع!</span></span>
-            <button class="share-btn" id="copyBtn">Copy</button>
-          </div>
-          <div style="margin-top:16px">
-            <button class="btn btn-forest" style="width:100%;justify-content:center">
-              <i class="fa-solid fa-hand-holding-dollar"></i>
-              <span class="lang-node lang-en lang-active">Join This Pool</span>
-              <span class="lang-node lang-fr">Rejoindre ce Pool</span>
-              <span class="lang-node lang-ar">الانضمام إلى هذه المجموعة</span>
-            </button>
+        </div>
+      </div>
+      <!-- Phone 3 -->
+      <div class="phone-wrap" style="max-width:140px">
+        <div class="phone-frame">
+          <div class="phone-notch-dot"></div>
+          <div class="phone-screen">
+            <img src="https://picsum.photos/id/201/300/600" alt="Group Pool App Screen" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -1065,27 +1024,8 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
             <span>Almarbat Seller</span>
             <span style="color:var(--sand)">★ 4.8 Rating</span>
           </div>
-          <div class="bscreen-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div class="bs-card"><div class="bs-label">Total Sales</div><div class="bs-value">142,500 MRU</div></div>
-              <div class="bs-card"><div class="bs-label">Active Listings</div><div class="bs-value">7 Animals</div></div>
-            </div>
-            <div class="bs-card"><div class="bs-label">Earnings This Month</div>
-              <div class="bs-mini-chart">
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:45%"></div></div>
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:70%"></div></div>
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:55%"></div></div>
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:90%"></div></div>
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:60%"></div></div>
-                <div class="bs-bar-c" style="height:100%"><div class="bs-bar-f" style="height:80%"></div></div>
-              </div>
-            </div>
-            <div class="bs-card"><div class="bs-label">Pending Order</div><div class="bs-value">#AN-9023 · Ram 60kg<br><span class="bs-badge pend" style="margin-top:4px"><i class="fa-solid fa-clock"></i> Awaiting pickup</span></div></div>
-            <button class="bscreen-btn">
-              <span class="lang-node lang-en lang-active">+ Add New Listing</span>
-              <span class="lang-node lang-fr">+ Ajouter une Annonce</span>
-              <span class="lang-node lang-ar">+ أضف إعلاناً جديداً</span>
-            </button>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://picsum.photos/id/237/260/480" alt="Seller Portal" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -1122,24 +1062,8 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
         <div class="big-phone-notch"></div>
         <div class="big-screen">
           <div class="bscreen-status"><span>Driver: Moustapha S.</span><span style="color:#4ade80">● Online</span></div>
-          <div class="bscreen-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div class="bs-card"><div class="bs-label">Today's Jobs</div><div class="bs-value">4 Active</div></div>
-              <div class="bs-card"><div class="bs-label">QR Verified</div><div class="bs-value" style="color:var(--forest)">100%</div></div>
-            </div>
-            <div class="bs-card">
-              <div class="bs-label">Current Mission</div>
-              <div class="bs-value" style="font-size:.82rem;margin-bottom:6px">Arafat Zone 4, Nouakchott<br>#AN-9023 · Ram 55kg</div>
-              <span class="bs-badge prog"><i class="fa-solid fa-truck-fast"></i> In Transit</span>
-            </div>
-            <div class="bs-card" style="text-align:center">
-              <div class="bs-label">QR Scan to Confirm</div>
-              <i class="fa-solid fa-qrcode" style="font-size:2rem;color:var(--forest);margin:8px 0;display:block"></i>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <button class="bscreen-btn" style="background:var(--forest)">Accept</button>
-              <button class="bscreen-btn" style="background:#dc2626">Decline</button>
-            </div>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://picsum.photos/id/251/260/480" alt="Driver Portal" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -1176,24 +1100,8 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
         <div class="big-phone-notch"></div>
         <div class="big-screen">
           <div class="bscreen-status"><span>Ahmed Ould B.</span><span style="color:var(--sand)">Wallet: 4,500 MRU</span></div>
-          <div class="bscreen-body">
-            <div class="bs-card">
-              <div class="bs-label">Recent Order</div>
-              <div class="bs-value" style="font-size:.82rem">Ram #AN-9023 · 6,500 MRU</div>
-              <span class="bs-badge done" style="margin-top:4px"><i class="fa-solid fa-circle-check"></i> Delivered</span>
-            </div>
-            <div class="bs-card">
-              <div class="bs-label">Active Group Pool</div>
-              <div class="bs-value" style="font-size:.82rem;margin-bottom:6px">Pool #204 · Large Camel</div>
-              <div class="bs-prog"><div class="bs-prog-fill" style="width:75%"></div></div>
-              <div style="font-size:.65rem;color:var(--muted);margin-top:4px;text-align:right">75% funded</div>
-            </div>
-            <div class="bs-card"><div class="bs-label">Active Delivery</div><div class="bs-value" style="font-size:.82rem">Ram · ETA ~35 min<br><span class="bs-badge prog" style="margin-top:4px"><i class="fa-solid fa-truck-fast"></i> In Transit</span></div></div>
-            <button class="bscreen-btn">
-              <span class="lang-node lang-en lang-active">Upload Payment Receipt</span>
-              <span class="lang-node lang-fr">Téléverser un Reçu</span>
-              <span class="lang-node lang-ar">رفع إيصال الدفع</span>
-            </button>
+          <div class="bscreen-body" style="padding:0;overflow:hidden">
+            <img src="https://picsum.photos/id/180/260/480" alt="Buyer Portal" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -1439,6 +1347,17 @@ footer{background:var(--ink);color:#6b7f78;padding:80px 6% 36px}
 <!-- Toast -->
 <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Done!</span></div>
 
+<!-- Video Modal -->
+<div id="videoModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:10000;align-items:center;justify-content:center;">
+  <div style="position:relative;max-width:90%;max-height:90vh;">
+    <button onclick="closeVideo()" style="position:absolute;top:-50px;right:0;color:white;font-size:2rem;background:none;border:none;cursor:pointer;">×</button>
+    <video id="heroVideo" controls style="width:100%;max-height:85vh;border-radius:12px;" autoplay>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
 <script>
 /* ==========================================================
    HERO SHRINK ON SCROLL
@@ -1515,23 +1434,30 @@ const cntObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 
 /* ==========================================================
-   GROUP PURCHASE PROGRESS BAR ANIMATION
+   GROUP PURCHASE PROGRESS BAR ANIMATION (kept for compatibility)
    ========================================================== */
 const fillObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if(e.isIntersecting){ document.getElementById('groupFill').style.width='75%'; fillObs.disconnect(); }
+    if(e.isIntersecting){ 
+      const gf = document.getElementById('groupFill');
+      if(gf) gf.style.width='75%'; 
+      fillObs.disconnect(); 
+    }
   });
 }, {threshold:0.3});
 const gf = document.getElementById('groupFill');
-if(gf) fillObs.observe(gf.closest('.device-card'));
+if(gf) fillObs.observe(gf.closest('.device-card') || document.body);
 
 /* ==========================================================
    COPY SHARE LINK BUTTON
    ========================================================== */
-document.getElementById('copyBtn').addEventListener('click', () => {
-  navigator.clipboard.writeText('https://almarbat.mr/pool/204').catch(()=>{});
-  showToast('Link copied!');
-});
+const copyBtn = document.getElementById('copyBtn');
+if(copyBtn){
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('https://almarbat.mr/pool/204').catch(()=>{});
+    showToast('Link copied!');
+  });
+}
 
 /* ==========================================================
    PORTAL TABS
@@ -1603,10 +1529,24 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),3500);
 }
 
+function playVideo() {
+  document.getElementById('videoModal').style.display = 'flex';
+  const video = document.getElementById('heroVideo');
+  video.play().catch(()=>{});
+}
+
+function closeVideo() {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('heroVideo');
+  video.pause();
+  video.currentTime = 0;
+  modal.style.display = 'none';
+}
+
 /* ==========================================================
    ACTIVE NAV LINK ON SCROLL
    ========================================================== */
-const sections = document.querySelectorAll('section[id], header[id]');
+const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 const navObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
