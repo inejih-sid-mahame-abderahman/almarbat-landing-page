@@ -1590,6 +1590,20 @@
       });
     });
 
+  const reveals = document.querySelectorAll('.reveal, .reveal-l, .reveal-r, .tl-row');
+  
+  function checkScroll() {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.85) {
+        el.classList.add('reveal-visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkScroll);
+  window.addEventListener('load', checkScroll);
+
     /* ==========================================================
        TESTIMONIAL SLIDER
        ========================================================== */
