@@ -354,32 +354,52 @@
   .tl-row.even .tl-right { grid-column: 2; text-align: left; }
 }
 
-/* Group Purchase */
+   /* ============================================================
+   GROUP PURCHASE SECTION
+   ============================================================ */
 .group-sec {
   background: linear-gradient(135deg, var(--forest-d) 0%, #0d3025 100%);
   position: relative;
   overflow: hidden;
+  padding: 100px 20px;
+}
+
+.group-sec::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: clamp(250px, 40vw, 400px);
+  height: clamp(250px, 40vw, 400px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,130,10,.12), transparent 70%);
 }
 
 .group-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(40px, 6vw, 80px);
   align-items: center;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 100px 40px;
+  position: relative;
+  z-index: 1;
 }
 
+.group-text .sec-title { color: var(--sand); }
+.group-text .sec-sub { color: rgba(232,213,163,.7); }
+
+.group-features { margin-top: 32px; }
 .group-feat {
   display: flex;
-  gap: 16px;
-  margin: 24px 0;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 18px);
+  margin: 28px 0;
 }
 
 .group-feat-icon {
-  width: 48px;
-  height: 48px;
+  width: clamp(42px, 5vw, 52px);
+  height: clamp(42px, 5vw, 52px);
   background: rgba(201,130,10,0.15);
   border: 1px solid rgba(201,130,10,0.3);
   color: var(--gold);
@@ -388,68 +408,93 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  font-size: 1.1rem;
 }
 
-/* Scroll Reveal Animation */
-.reveal, .reveal-l, .reveal-r {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+.group-feat-text h4 {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-weight: 700;
+  color: var(--sand);
+  margin-bottom: 6px;
+}
+.group-feat-text p {
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  color: rgba(232,213,163,.75);
+  line-height: 1.65;
 }
 
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Unified Phone Frames - Desktop Optimized */
+.group-phones {
+  display: flex;
+  gap: clamp(16px, 3vw, 28px);
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
-.reveal-l { transform: translateX(-80px); }
-.reveal-r { transform: translateX(80px); }
+.group-phones .phone-wrap {
+  width: clamp(140px, 22vw, 180px);
+  position: relative;
+}
 
-/* Phone frames remain the same but cleaner */
+.group-phones .phone-wrap.middle {
+  margin-top: clamp(30px, 5vw, 60px); /* nice stagger on desktop */
+}
+
 .phone-frame {
-  border: 12px solid #111;
-  border-radius: 48px;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  width: 100%;
+  background: var(--ink);
+  border-radius: clamp(24px, 4vw, 42px);
+  padding: clamp(6px, 1.2vw, 12px);
+  box-shadow: 0 40px 80px rgba(10,79,58,.25), 0 0 0 1px rgba(255,255,255,.08);
+  position: relative;
 }
-    /* ============================================================
-       GROUP PURCHASE — Unified Phone Frames
-       ============================================================ */
-    .group-sec{background:linear-gradient(135deg,var(--forest-d) 0%,#0d3025 100%);overflow:hidden;position:relative}
-    .group-sec::after{
-      content:'';position:absolute;bottom:-100px;left:-100px;
-      width:clamp(250px, 40vw, 400px);height:clamp(250px, 40vw, 400px);border-radius:50%;
-      background:radial-gradient(circle,rgba(201,130,10,.12),transparent 70%);
-    }
-    .group-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(25px, 5vw, 60px);align-items:center;position:relative;z-index:1}
-    .group-text .sec-title{color:var(--sand)}
-    .group-text .sec-sub{color:rgba(232,213,163,.7)}
-    .group-feat{display:flex;align-items:flex-start;gap:clamp(10px, 1.5vw, 14px);margin:clamp(12px, 2vw, 16px) 0}
-    .group-feat-icon{width:clamp(30px, 4vw, 36px);height:clamp(30px, 4vw, 36px);border-radius:8px;background:rgba(201,130,10,.2);border:1px solid rgba(201,130,10,.3);color:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:clamp(0.75rem, 1.1vw, 0.85rem)}
-    .group-feat-text h4{font-size:clamp(0.8rem, 1.2vw, 0.9rem);font-weight:700;color:var(--sand);margin-bottom:3px}
-    .group-feat-text p{font-size:clamp(0.7rem, 1vw, 0.8rem);color:rgba(232,213,163,.6);line-height:1.6}
 
-    .group-phones{
-      display:flex;
-      gap:clamp(8px, 2vw, 20px);
-      justify-content:center;
-      flex-wrap:wrap;
-      align-items:flex-start;
-    }
-    .group-phones .phone-wrap{
-      width:clamp(120px, 18vw, 160px);
-    }
+.phone-notch-dot {
+  width: clamp(40px, 6vw, 90px);
+  height: clamp(10px, 1.5vw, 20px);
+  background: var(--ink);
+  border-radius: 0 0 clamp(6px, 1vw, 14px) clamp(6px, 1vw, 14px);
+  margin: 0 auto clamp(4px, 0.8vw, 8px);
+  position: relative;
+  z-index: 2;
+}
 
-    @media(max-width:900px){
-      .group-inner{grid-template-columns:1fr;gap:clamp(30px, 5vw, 40px)}
-      .group-text{text-align:center}
-      .group-feat{text-align:left}
-    }
-    @media(max-width:600px){
-      .group-phones{flex-direction:column;align-items:center}
-      .group-phones .phone-wrap{width:clamp(160px, 50vw, 220px)}
-    }
+.phone-screen {
+  border-radius: clamp(18px, 3vw, 32px);
+  overflow: hidden;
+  background: var(--cream);
+  aspect-ratio: 9 / 19.5;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .group-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(50px, 8vw, 70px);
+  }
+  .group-text { text-align: center; }
+  .group-feat { text-align: left; justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .group-phones {
+    flex-direction: column;
+    align-items: center;
+  }
+  .group-phones .phone-wrap.middle { margin-top: 0; }
+  .group-phones .phone-wrap { width: clamp(180px, 65vw, 240px); }
+}
 
     /* ============================================================
        UNIFIED PHONE FRAME SYSTEM (MATCHES PORTAL BIG PHONE)
